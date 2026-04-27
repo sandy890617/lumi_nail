@@ -1,0 +1,510 @@
+@charset "UTF-8";
+
+/* --- 1. 引入字體 --- */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&family=Noto+Sans+TC:wght@300;400;500&family=Playfair+Display:wght@700&display=swap');
+
+/* --- 2. 核心色調與變數 --- */
+:root {
+    --primary-color: #8E7366;		/* 標題、重點按鈕、邊框 */
+    --accent-color: #B298DC;		/* 提示、連結 Hover、強調小圖示 */
+    --text-dark: #5D5451;			/* 一般內文、副標題 */
+    --bg-main: #F2EDE8;				/* 網站大背景、區塊間隔 */
+    --bg-card: #FBF9F7;				/* 卡片容器、導覽列背景 */
+    --white: #FFFFFF;				
+}
+
+/* --- 3. 基礎設定 --- */
+body {
+    background-color: var(--bg-main);
+    color: var(--text-dark);
+    font-family: 'Noto Sans TC', "Microsoft JhengHei", sans-serif;	/* 字體設定 */
+    line-height: 1.6;	/* 設定行高為字體大小的 1.6 倍 */
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* 禁止水平捲軸出現 */
+}
+
+/* --- 選單位置 --- */
+/* 上面橫條設定：負責背景與定位*/
+.navbar {
+    background: #FFFBF0;
+    padding: 15px 0;
+    position: sticky;		/* 搭配top:0 黏在畫面最上方 */
+    top: 0;
+    z-index: 1000;			/* 層級管理 */
+    border-bottom: 2px solid #EADED7; 	/* 底線 */
+    box-shadow: 0 2px 10px rgba(142, 115, 102, 0.05);	/* 輕微陰影 */
+    width: 100%;			/* 全寬 */
+}
+
+/* 上面橫條設定：內容對齊與寬度限制 */
+.nav-container {
+    width: 92%;
+    max-width: 1400px;
+    margin: 0 auto;		/* 水平置中 */ 
+    display: flex;
+    justify-content: space-between; /* 左右兩端對齊，Logo 在左，選單 / 按鈕在右 */
+    align-items: center;		/* 垂直置中對齊 */
+}
+
+/* Logo 樣式：鎖定型態 嚕咪美學 */
+.logo {
+    text-decoration: none;
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    letter-spacing: 2px;
+    color: #8E7366;
+    font-weight: 700;
+    flex-shrink: 0;      /* 禁止被擠壓 */
+    white-space: nowrap; /* 禁止換行 */
+}
+
+/* 漢堡按鈕：預設隱藏 */
+.menu-toggle {
+    display: none;		/* 初始不顯示 */
+    flex-direction: column;		/* 讓內部的 <span class="bar"> 垂直排列 */
+    justify-content: space-between;	/* 上中下三條線平均分布在按鈕高度內 */
+    height: 18px;
+    width: 25px;
+    cursor: pointer;		/* 滑鼠移到按鈕時變手指圖示 */
+    background: none;
+    border: none;
+    padding: 0;			/* 去掉內邊距 */
+    z-index: 1100;
+}
+
+/* 漢堡選單按鈕內的三條線 */
+.menu-toggle .bar {
+    height: 3px;				/* 每條線的高度 3px */
+    width: 100%;
+    background-color: #8E7366;
+    border-radius: 10px;		/* 線條兩端圓角 */
+    transition: all 0.3s ease;	/* 過渡效果 → 點擊時可以平滑動畫  搭配 JS 做漢堡 → 「X」動畫時，看起來自然流暢 */
+}
+
+/* 電腦版選單 */
+.nav-links {
+    display: flex;		/* 將 <ul> 變成 Flex 容器 */
+    list-style: none;	/* 移除 <ul> 預設的圓點（bullet） */
+    margin: 0;			/* 移除預設的外距與內距 */
+    padding: 0;
+    align-items: center;/* Flex 容器垂直置中 <li> */
+}
+
+/* 控制選單項目之間的水平間距 */
+.nav-links li {
+    margin-left: 35px;
+}
+
+/* 選單連結樣式設定 */ 
+.nav-links a {
+    text-decoration: none;	/* 移除 <a> 的預設底線 */
+    color: #8E7366;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 1px;	/* 字母間距 1px */
+    position: relative;
+    padding-bottom: 5px;	/* 下方留 5px 空間 */
+    transition: color 0.3s ease;	/* 文字顏色改變時有漸變效果 */
+}
+
+/* 初始底線樣式（高度、顏色、寬度 0、定位） */ 
+.nav-links a::after {
+    content: '';			/* 這裡是空內容，只用來顯示「線條」 */
+    position: absolute;		/* 絕對定位 */
+    width: 0;
+    height: 1px;			/* 底線厚度 1px */
+    bottom: 0;				/* 底線放在文字底部 */
+    left: 50%;
+    background-color: #8E7366;
+    transition: 0.3s ease;	/* 寬度變化或顏色變化有過渡效果 */
+    transform: translateX(-50%);	/* 將底線從左邊偏移修正到真正居中 */
+}
+
+/* 滑鼠 hover 動態展開底線 */
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* 立即預約按鈕 */
+.nav-cta {
+    border: 1px solid #8E7366;
+    padding: 6px 20px !important;	/* 上下內距 6px，左右 20px → 按鈕長條形 */
+    border-radius: 0px;				/* 按鈕沒有圓角 */
+    font-size: 14px;
+}
+
+.nav-cta:hover {
+    background-color: #8E7366;	/* 滑鼠 hover 時按鈕背景變成奶茶棕色 */
+    color: #FFF !important;		/* 強制覆蓋其他文字顏色設定 */
+}
+
+
+/* --------------------------------------------------- */
+
+
+/* --- 圖片跑馬燈 --- */
+.hero-carousel {
+    position: relative;	/* 對輪播區塊使用 relative 定位 */
+    width: 100%;
+    height: 60vh; 		/* 在電腦端佔螢幕高度的 60% vh：自動隨螢幕大小調整 */
+    min-height: 300px;
+    overflow: hidden;	/* 超出容器的內容會被裁切 */ 
+    background-color: #E8E0D9; /* 載入前的緩衝色 */
+}
+
+/* 輪播（Hero Carousel）內部的「滑動軌道」容器 */
+.hero-track {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+/* 輪播（Hero Carousel）中的單一幻燈片 */
+.hero-slide {
+    position: absolute;	/* 幻燈片採 絕對定位 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out; /* 淡入淡出效果 ease-in-out → 先慢後快再慢，動畫自然 */
+    z-index: 1;	/* 控制幻燈片疊放順序 */
+}
+
+/* 控制哪一張幻燈片當前顯示 */
+.hero-slide.active {
+    opacity: 1;	/* 該幻燈片顯示出來 */
+    z-index: 2;	/* 該幻燈片放在疊層的最上層 */
+}
+
+/* 完整填滿幻燈片區塊，保持比例且不變形 */
+.hero-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 保持圖片比例不變形 */
+}
+
+/* 左右箭頭 */
+.hero-prev, .hero-next {
+    /* 定位與位置 */ 
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    
+    /* 外觀樣式 */
+    background: rgba(255, 255, 255, 0.3);
+    border: none;	/* 無外框 */
+    color: white;
+    font-size: 24px;
+    padding: 15px;		/* 按鈕範圍大，方便點擊 */
+    cursor: pointer;	/* 滑鼠變手指，提示可點擊 */
+    
+    /* 層級與圓角 */
+    z-index: 10;
+    border-radius: 0 5px 5px 0;	/* 按鈕右側圓角 */
+    
+    /* 玻璃質感效果 */
+    backdrop-filter: blur(5px);	/* 毛玻璃效果 → 背景模糊 */
+}
+
+.hero-next {
+    right: 0;
+    border-radius: 5px 0 0 5px;	
+}
+
+.hero-prev:hover, .hero-next:hover {
+    background: rgba(142, 115, 102, 0.6);	/* 當滑鼠移到左右箭頭按鈕時，背景顏色變成 半透明奶茶棕色 */
+}
+
+/* Hero Carousel 的底部輪播指示點 */
+.hero-dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);	/* 將自身寬度的一半向左移動 */
+    z-index: 10;
+    display: flex;
+    gap: 10px;
+}
+
+/* Hero Carousel 底部輪播圓點 */
+.dot {
+    width: 12px;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    cursor: pointer;	/* 當滑鼠移到該元素上時，指標會變成 手型 */
+}
+
+/* Hero Carousel 底部輪播圓點變長 */
+.dot.active {
+    background: #8E7366;
+    width: 30px; /* 拉長效果，更有現代感 */
+    border-radius: 10px;
+}
+
+/* --------------------------------------------------- */
+
+
+/* ---  關於我們  --- */ 
+/* 區塊樣式 */
+.about-section {
+    padding-top: 80px;
+    padding-bottom: 30px; /* 將原本可能的 80px 或 100px 調小 */
+    background-color: #FBF9F7; /* 淺米色背景 */
+}
+
+/* 區塊樣式內部容器 */
+.about-container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;	/* 垂直置中每個子元素 */
+    gap: 50px;				/* 子元素之間水平間距 50px */
+    flex-wrap: wrap; 		/* 手機版自動換行 */
+}
+
+/* 控制圖片區塊彈性大小與最小寬度 */
+.about-image {
+    flex: 1;
+    min-width: 300px;
+}
+
+/* 圖片自適應、圓角、帶裝飾性陰影 */
+.about-image img {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 20px 20px 0px #F2EDE8; /* 裝飾性陰影 */
+}
+
+/* 控制文字區塊彈性大小與最小寬度 */
+.about-content {
+    flex: 1;
+    min-width: 300px;
+}
+
+/* 控制關於嚕咪美學 */
+.section-subtitle {
+    font-family: 'Playfair Display', serif;
+    color: #B2988A;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+/* 控制 嚕咪美學｜讓美，慢慢發生在你身上 */
+.section-title {
+    color: #8E7366;
+    font-family: 'Noto Serif TC', serif;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+/* 文字內容 */
+.about-content p {
+    color: #5D5451;
+    margin-bottom: 15px;
+    line-height: 1.8;	/* 1.8行句 */ 
+    /* 如果您希望文字本身也置中，可以取消下方註解 */
+    /* text-align: center; */
+}
+
+.about-btn {
+    /* 1. 基礎設定：消除預設樣式 */
+    text-decoration: none; /* 移除底線 */
+    display: inline-block; /* 讓按鈕可以設定寬高內距 */
+    
+    /* 2. 顏色設定：點過與否都一樣 */
+    color: var(--white);           /* 文字白色 */
+    background-color: var(--primary-color); /* 背景用你設定的棕色 */
+    
+    /* 3. 按鈕造型 */
+    padding: 12px 28px;
+    border-radius: 50px;           /* 圓角膠囊造型 */
+    font-weight: 500;
+    transition: all 0.3s ease;     /* 讓變化變順滑 */
+    border: 1px solid var(--primary-color);
+}
+
+/* 4. 強制處理「點過後」的狀態，維持原色 */
+.about-btn:visited {
+    color: var(--white);
+}
+
+/* 5. 滑鼠移上去的互動效果 (Hover) */
+.about-btn:hover {
+    background-color: transparent; /* 背景變透明 */
+    color: var(--primary-color);   /* 文字變棕色 */
+    box-shadow: 0 4px 12px rgba(142, 115, 102, 0.2);
+}
+
+/* --------------------------------------------------- */
+
+
+/* --- 好評區塊主容器 --- */
+
+.testimonials-section {
+    padding-top: 20px;    /* 將頂部內距調小 */
+    padding-bottom: 80px;
+    background-color: #FBF9F7; /* 極淺奶茶色 */
+    text-align: center;
+}
+
+.testimonial-grid {
+	display: flex;          /* 改用 flex 佈局 */
+    flex-wrap: wrap;        /* 允許換行 */
+    justify-content: center; /* 重點：讓第二排的卡片自動居中 */
+    gap: 25px;              /* 卡片之間的間距 */
+    margin: 40px auto;
+    max-width: 1400px;      /* 稍微加寬，確保 4 個卡片排得下 */
+    padding: 0 20px;
+}
+
+/* 好評卡片設計 */
+.testimonial-card {
+	/* 這裡計算寬度：(100% / 4) - 扣除間距 */
+    width: calc(25% - 20px); 
+    min-width: 280px;       /* 確保在小螢幕時不會縮得太小 */
+    background: #ffffff;
+    padding: 40px 30px;
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(142, 115, 102, 0.08);
+    transition: 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-10px); /* 滑鼠懸停微浮起 */
+}
+
+.stars {
+    color: #B2988A; /* 暖褐色星星 */
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.review-text {
+    color: #5D5451;
+    line-height: 1.8;
+    font-size: 15px;
+    margin-bottom: 25px;
+    font-style: italic;
+}
+
+.client-info {
+    border-top: 1px solid #F2EDE8;
+    padding-top: 15px;
+}
+
+.client-name {
+    display: block;
+    color: #8E7366;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.verified-tag {
+    font-size: 12px;
+    color: #B2988A;
+    background: #FBF9F7;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-top: 5px;
+    display: inline-block;
+}
+
+/* Google 連結按鈕區區 */
+.google-link-wrapper {
+    margin-top: 50px;
+}
+
+.google-link-wrapper p {
+    color: #8E7366;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.google-review-btn {
+    display: inline-block;
+    padding: 12px 35px;
+    border: 1px solid #8E7366;
+    color: #8E7366;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: 0.3s;
+    font-size: 15px;
+}
+
+.google-review-btn:hover {
+    background-color: #8E7366;
+    color: #ffffff;
+}
+
+/* 卡片頂部資訊列 */
+.client-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+/* 圓形頭像 (文字佔位符) */
+.client-avatar {
+    width: 40px;
+    height: 40px;
+    background-color: #E8E0DA; /* 奶茶色調 */
+    color: #8E7366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 16px;
+    flex-shrink: 0;
+}
+
+.client-meta {
+    display: flex;
+    flex-direction: column;
+}
+
+.client-name {
+    color: #5D5451;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.review-date {
+    font-size: 11px;
+    color: #B2988A;
+}
+
+
+
+/* --------------------------------------------------- */
+
+/* --- 底下聯絡資訊 --- */ 
+.footer {
+    background-color: var(--footer-bg);
+    padding: 40px 20px;
+    text-align: center;
+}
+
+/* --------------------------------------------------- */
+/* --- 手機板設定 --- */
+
+/* 漢堡按鈕轉 X 動畫 */
+.menu-toggle.is-active .bar:nth-child(1) {
+    transform: translateY(7.5px) rotate(45deg);
+}
+.menu-toggle.is-active .bar:nth-child(2) {
+    opacity: 0;
+}
+.menu-toggle.is-active .bar:nth-child(3) {
+    transform: translateY(-7.5px) rotate(-45deg);
+}
+
+

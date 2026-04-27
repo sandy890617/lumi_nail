@@ -1,0 +1,535 @@
+<!-- 美甲服務 -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="CSS/Manicure.css">
+<link rel="stylesheet" href="CSS/index.css">
+<title>嚕咪美學 Lumi Beauty｜中山美甲・韓式水飛梭・小臉拉提・穿戴甲</title>
+<script src="JS/index.js"></script>
+<script src="JS/Manicure.js"></script>
+
+</head>
+<body >
+ 	 <nav class="navbar">
+	    <div class="nav-container">
+	        <a href="index.html" class="logo">嚕 咪 美 學</a>
+			
+			<!-- 手機/小螢幕版的"漢堡選單按鈕" -->
+	        <button class="menu-toggle" id="mobile-menu">
+	            <span class="bar"></span>	<!-- 漢堡的一條線 -->
+	            <span class="bar"></span>
+	            <span class="bar"></span>
+	        </button>
+	        
+	        <ul class="nav-links" id="nav-links">
+	            <li><a href="index.html">首頁</a></li>
+	            <li><a href="Manicure.html">美甲服務</a></li>
+	            <li><a href="HydraFacial.html">韓式精緻美學</a></li>
+	            <li><a href="press_nails.html">穿戴甲</a></li>
+	            <li><a href="#">關於我們</a></li>
+	            <li><a href="#" class="nav-cta">立即預約</a></li>
+	        </ul>
+    	</div>
+	</nav>
+	
+	
+	<!-- 美甲手部價目表 -->
+	<section class="price-container">
+	    <h2 class="section-title">服務價目表</h2>
+	
+	    <div class="price-tabs">
+	        <button class="tab-btn active" onclick="openTab(event, 'hand-service')">手部凝膠</button>
+	        <button class="tab-btn" onclick="openTab(event, 'foot-service')">足部凝膠</button>
+	        <button class="tab-btn" onclick="openTab(event, 'nail-biting')">啃咬指甲 / 問題指甲矯正專區</button>
+	        <button class="tab-btn" onclick="openTab(event, 'other-service')">其他項目</button>
+	    </div>
+	
+	    <div id="hand-service" class="tab-content active">
+	        <p class="price-notice">※ 以上項目均包含基礎保養、加厚，款式設計依複雜度另行報價</p>
+	        <div class="price-item">
+	            <span class="service-name">單色凝膠</span>
+	            <span class="price-dots"></span>
+	            <span class="service-price">$ 950</span>
+	        </div>
+	        <div class="price-item">
+	            <span class="service-name">貓眼</span>
+	            <span class="price-dots"></span>
+	            <span class="service-price">$ 1,050</span>
+	        </div>
+	        <div class="price-item">
+	            <span class="service-name">漸變 / 鏡面設計</span>
+	            <span class="price-dots"></span>
+	            <span class="service-price">$ 1,250</span>
+	        </div>
+	        <div class="price-item">
+	            <span class="service-name">自由發揮</span>
+	            <span class="price-dots"></span>
+	            <span class="service-price">$ 1,300</span>
+	        </div>
+	        <div class="price-item">
+	            <span class="service-name">帶圖款式</span>
+	            <span class="price-dots"></span>
+	            <span class="service-price">$ 1,399 up</span>
+	        </div>
+	    </div>
+	    
+		<!-- 美甲 腳部 價目表 -->
+	    <div id="foot-service" class="tab-content">
+	        <p class="price-notice">※ 以上項目均包含基礎保養、加厚，款式設計依複雜度另行報價</p>
+	        <div class="price-item">
+	            <span class="service-name">單色凝膠</span>
+	            <span class="price-dots"></span>
+	            <span class="service-price">$ 1,100</span>
+	        </div>
+	        <div class="price-item">
+	            <span class="service-name">貓眼</span>
+	            <span class="price-dots"></span>
+	            <span class="service-price">$ 1,200</span>
+	        </div>
+	        <div class="price-item">
+	            <span class="service-name">法式 / 鏡面設計</span>
+	            <span class="price-dots"></span>
+	            <span class="service-price">$ 1,350</span>
+	        </div>
+	        <div class="price-item">
+	            <span class="service-name">自由發揮</span>
+	            <span class="price-dots"></span>
+	            <span class="service-price">$ 1,400</span>
+	        </div>
+	        <div class="price-item">
+	            <span class="service-name">帶圖款式</span>
+	            <span class="price-dots"></span>
+	            <span class="service-price">$ 1,499 up</span>
+	        </div>
+	    </div>
+	    
+	    <!-- 啃咬指甲 / 問題指甲矯正專區 -->
+	    <div id="nail-biting" class="tab-content">
+	    	<div class="rules-box" style="border: 1px solid #d3bba7; padding: 10px; margin-bottom: 20px; border-radius: 5px;">
+			    <p style="font-size: 0.9em; color: #8c6a5a; margin: 0; line-height: 1.5;">
+			        📍 <b>預約流程：</b>私訊官方 LINE 傳送指甲近照，經評估後方可預約。<br>
+			        ⚠️ <b>矯正規範：</b>套餐使用者須於 <b>14-16 天內</b> 準時回診，以維持最佳矯正進度。
+			    </p>
+			</div>
+	        <div class="price-item">
+	            <span class="service-name">咬甲密集養成套卡(透明)</span>
+	            <span class="price-dots"></span>
+	            <span class="service-price">$ 1499</span>
+	        </div>
+	        <p class="price-notice-sub">1個月 / 兩次服務 (含2次卸甲 + 2次透明建構)</p>
+	        <div class="price-item">
+	            <span class="service-name">咬甲密集養成套卡(單色)</span>
+	            <span class="price-dots"></span>
+	            <span class="service-price">$ 1888</span>
+	        </div>
+	        <p class="price-notice-sub">1個月 / 兩次服務 (含2次卸甲 + 2次單色建構)</p>
+	        <div class="price-item">
+	            <span class="service-name">單次透明建構</span>
+	            <span class="price-dots"></span>
+	            <span class="service-price">$ 750</span>
+	        </div>
+	        <div class="price-item">
+	            <span class="service-name">單次單色建構</span>
+	            <span class="price-dots"></span>
+	            <span class="service-price">$ 950</span>
+	        </div>
+	        <div class="price-item">
+	            <span class="service-name">本店續做卸甲</span>
+	            <span class="price-dots"></span>
+	            <span class="service-price">$ 150</span>
+	        </div>
+	    </div>
+		
+		<!-- 卸甲/其他項目 -->
+	    <div id="other-service" class="tab-content">
+	        <div class="price-item">
+	            <span class="service-name">本店續做</span>
+	            <span class="price-dots"></span>
+	            <span class="service-price">$ 150</span>
+	        </div>
+	        <div class="price-item">
+	            <span class="service-name">他店續做</span>
+	            <span class="price-dots"></span>
+	            <span class="service-price">$ 300</span>
+	        </div>
+	        <div class="price-item">
+	            <span class="service-name">純卸甲</span>
+	            <span class="price-dots"></span>
+	            <span class="service-price">$ 500</span>
+	        </div>
+	        <div class="price-item">
+	            <span class="service-name">深層保養(手/腳)</span>
+	            <span class="price-dots"></span>
+	            <span class="service-price">$ 700</span>
+	        </div>
+	        <p class="price-notice-sub">（含修型/剪死皮/去角質/美白軟膜/手部按摩/護甲強化）</p>
+	    </div>
+	    
+	</section>
+	
+	<!-- 啃咬指甲 / 問題指甲矯正專區 -->
+	<section id="biting-knowledge-container" class="color-gallery-container" style="display: none;">
+	    <h2 class="gallery-main-title">矯正必讀資訊</h2>
+	
+	    <div class="style-detail-card">
+	        <div class="detail-header">
+	            <span class="detail-price-tag">成功關鍵：耐心與配合</span>
+	            <h3 class="detail-title">為什麼需要 14 天回診？</h3>
+	        </div>
+	        
+	        <div class="target-audience">
+	            <p class="audience-label">矯正階段目標：</p>
+	            <div class="tag-group">
+	                <span class="tag">第 1-2 週：戒斷啃咬慾望</span>
+	                <span class="tag">第 4-6 週：甲肉重新黏合</span>
+	                <span class="tag">第 8-12 週：甲床穩定推移</span>
+	            </div>
+	        </div>
+	
+	        <div class="knowledge-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px;">
+	            <div class="info-item" style="background: #fdfaf8; padding: 15px; border-radius: 8px;">
+	                <h4 style="color: #8c6a5a; margin-bottom: 8px;">🚫 為什麼不能延甲？</h4>
+	                <p style="font-size: 0.85em; color: #666;">咬甲者的甲床極短，延甲會產生巨大的槓桿力，極易造成真甲撕裂受傷。我們堅持「養好原生甲」才是根本。</p>
+	            </div>
+	            <div class="info-item" style="background: #fdfaf8; padding: 15px; border-radius: 8px;">
+	                <h4 style="color: #8c6a5a; margin-bottom: 8px;">🧴 居家護理重點</h4>
+	                <p style="font-size: 0.85em; color: #666;">指緣油不是有擦就好，建議每天「少量多次」塗抹 5 次以上，保持甲皮柔軟，能減少 80% 想摳皮的衝動。</p>
+	            </div>
+	        </div>
+	
+	        <div class="grid" style="margin-top: 25px;">
+	            <div class="color-item">
+	                <img src="img/養甲專區/施作凝膠前.png" alt="施作凝膠前">
+	                <p>2025年9月拍攝</p>
+	            </div>
+	            <div class="color-item">
+	                <img src="img/養甲專區/施作凝膠後.png" alt="施作凝膠後">
+	                <p>2026年2月拍攝</p>
+	            </div>
+	            <div class="color-item">
+	                <img src="img/養甲專區/養甲紀錄.jpg" alt="養甲紀錄">
+	                <p>養甲紀錄.jpg</p>
+	            </div>
+	            <div class="color-item">
+	                <img src="img/養甲專區/直接了當給你看差別.jpg" alt="直接了當給你看差別">
+	                <p>直接了當給你看差別.jpg</p>
+	            </div>
+	        </div>
+	
+	        <div class="view-more-container">
+	            <p style="color: #8c6a5a; font-weight: bold;">「給指甲一個重生的機會，現在就私訊詢問」</p>
+	        </div>
+	    </div>
+	</section>
+	
+	<!-- 作品集 -->
+	<section class="color-gallery-container">
+	    <h2 class="gallery-main-title">款式作品集</h2>
+	
+	    <div class="gallery-tabs">
+	        <button class="gallery-tab-btn active" onclick="switchGallery(event, 'tab-single')">單色</button>
+	        <button class="gallery-tab-btn" onclick="switchGallery(event, 'tab-cat')">貓眼</button>
+	        <button class="gallery-tab-btn" onclick="switchGallery(event, 'tab-Mirror-French')">鏡面 / 法式</button>
+	        <button class="gallery-tab-btn" onclick="switchGallery(event, 'tab-Free-play')">自由發揮(僅供參考，不提供選擇款式)</button>
+	        <button class="gallery-tab-btn" onclick="switchGallery(event, 'tab-Styles-pictures')">帶圖款式</button>
+	    </div>
+		
+		<!-- 單色 -->
+		<div id="tab-single" class="gallery-content active">
+		    <div class="style-detail-card">
+			    <div class="detail-header">
+			        <span class="detail-price-tag">單色：$ 950</span>
+			        <h3 class="detail-title">單色作品系列</h3>
+			    </div>
+			    
+			    <div class="target-audience">
+			        <p class="audience-label">適合對象：</p>
+			        <div class="tag-group">
+			            <span class="tag">美甲初體驗</span>
+			            <span class="tag">簡約耐看款</span>
+			            <span class="tag">視覺修長手指</span>
+			            <span class="tag">定期保養補色</span>
+			            <span class="tag">百搭不燒腦</span>
+			        </div>
+			    </div>
+				<div class="grid">
+		            <div class="color-item" data-img="img/單色/HanHan 016.jpg,img/588254718087135799.jpg,img/line_oa_chat_250818_095451.jpg">
+				        <img src="img/單色/HanHan 016.jpg" alt="HanHan 016">
+				        <p>HanHan 016</p>
+				    </div>
+		            <div class="color-item" data-img="img/單色/匠 G23M.jpg,img/單色//HanHan 016.jpg,img/單色/匠 G23M.jpg">
+		                <img src="img/單色/匠 G23M.jpg" alt="匠 G23M" loading="lazy">
+		                <p>匠 G23M</p>
+		            </div>
+		            <div class="color-item" data-img="img/單色/S_INSYOU_16/INSYOU_16.jpg">
+				        <img src="img/單色/S_INSYOU_16/INSYOU_16.jpg" alt="INSYOU 16">
+				        <p>INSYOU 16</p>
+				    </div>
+		          	<div class="color-item" 
+				    	data-img="img/單色/S_INSYOU_21/S_INSYOU_21_1.JPEG,
+				    				 img/單色/S_INSYOU_21/S_INSYOU_21_2.JPEG,
+				    				 img/單色/S_INSYOU_21/S_INSYOU_21_3.JPEG">
+				        <img src="img/單色/S_INSYOU_21/S_INSYOU_21_1.JPEG" alt="INSYOU 21">
+				        <p>INSYOU 21</p>
+				    </div>
+				    <div class="color-item" data-img="img/單色/MODING/F30_1.jpg,img/單色/MODING/F30_2.jpg">
+				        <img src="img/單色/MODING/F30_1.jpg" alt="F30">
+				        <p>F30</p>
+				    </div>
+		        </div>
+			    <div class="view-more-container">
+			        <a href="SingleColor.html" class="view-more-btn">
+			            查看更多單色作品 <span>→</span>
+			        </a>
+			    </div>
+			</div>
+		</div>
+		
+		<!-- 貓眼 -->
+	    <div id="tab-cat" class="gallery-content">
+	        <div class="style-detail-card">
+			    <div class="detail-header">
+			        <span class="detail-price-tag">貓眼：$ 1050</span>
+			        <h3 class="detail-title">貓眼作品系列</h3>
+			    </div>
+			    
+			    <div class="target-audience">
+			        <p class="audience-label">適合對象：</p>
+			        <div class="tag-group">
+			            <span class="tag">喜歡低調卻有質感</span>
+			            <span class="tag">不想常換款、但又怕無聊的人</span>
+			            <span class="tag">想要指尖有光澤感、但不愛亮片的人</span>
+			            <span class="tag">百搭不燒腦</span>
+			            <span class="tag">上班、約會、日常都能駕馭的族群</span>
+			        </div>
+			    </div>
+				<div class="grid">
+		            <div class="color-item" data-img="img/貓眼/M19_1.jpg,img/貓眼/M19_2.jpg,img/貓眼/M19_3.jpg,img/貓眼/M19_4.jpg,img/貓眼/M19_5.jpg">
+				        <img src="img/貓眼/M19_1.jpg" alt="M19_1">
+				        <p>M19</p>
+				    </div>
+		            <div class="color-item" 
+		         	data-img="img/貓眼/suuseegel/栗子焦糖/栗子焦糖08_1.jpg,
+		         				 img/貓眼/suuseegel/栗子焦糖/栗子焦糖_08_1.jpg,
+								 img/貓眼/suuseegel/栗子焦糖/栗子焦糖_08_2.jpg,
+		         				 img/貓眼/suuseegel/栗子焦糖/栗子焦糖_08_3.jpg,
+		         				 img/貓眼/suuseegel/栗子焦糖/栗子焦糖_08_4.jpg,
+								 img/貓眼/suuseegel/栗子焦糖/栗子焦糖_08_5.jpg">
+				        <img src="img/貓眼/suuseegel/栗子焦糖/栗子焦糖_08_1.jpg" alt="栗子焦糖08">
+				        <p>栗子焦糖08</p>
+				    </div>
+					<div class="color-item" data-img="img/貓眼/燕翎/荔枝貓眼 QS02_1.jpg,img/貓眼/燕翎/荔枝貓眼 QS02_2.jpg">
+				        <img src="img/貓眼/燕翎/荔枝貓眼 QS02_1.jpg" alt="荔枝貓眼 QS02">
+				        <p>荔枝貓眼 QS02</p>
+				    </div>
+					<div class="color-item" data-img="img/貓眼/燕翎/禪意 QS1786_1.jpg,img/貓眼/燕翎/禪意 QS1786_2.jpg">
+				        <img src="img/貓眼/燕翎/禪意 QS1786_1.jpg" alt="禪意 QS1786">
+				        <p>禪意 QS1786</p>
+				    </div>
+					<div class="color-item" data-img="img/貓眼/燕翎/茉莉當歸QS4510_1.jpg,img/貓眼/燕翎/茉莉當歸QS4510_2.jpg">
+				        <img src="img/貓眼/燕翎/茉莉當歸QS4510_1.jpg" alt="茉莉當歸QS4510">
+				        <p>茉莉當歸QS4510</p>
+				    </div>
+		        </div>
+			    <div class="view-more-container">
+			        <a href="CatEye.html" class="view-more-btn">
+			            查看更多貓眼作品 <span>→</span>
+			        </a>
+			    </div>
+			</div>
+		</div>
+		
+		<!-- 鏡面 / 法式 -->
+	    <div id="tab-Mirror-French" class="gallery-content">
+	        <div class="style-detail-card">
+			    <div class="detail-header">
+			        <span class="detail-price-tag">鏡面 / 法式：$ 1250</span>
+			        <h3 class="detail-title">鏡面 / 法式作品系列</h3>
+			    </div>
+			    
+			    <div class="target-audience">
+			        <p class="audience-label">鏡面適合對象：</p>
+			        <div class="tag-group">
+			            <span class="tag">喜歡 高光澤</span>
+			            <span class="tag">一點個性、時尚感，但不想太多造型</span>
+			            <span class="tag">歐美風、Y2K、冷調時尚感</span>
+			        </div>
+			    </div>
+			    <div class="target-audience">
+			        <p class="audience-label">法式適合對象：</p>
+			        <div class="tag-group">
+			            <span class="tag">乾淨、耐看、不退流行</span>
+			            <span class="tag">修長、整齊、有精神</span>
+			            <span class="tag">不愛太浮誇、偏好低調質感</span>
+			        </div>
+			    </div>
+				<div class="grid">
+				<br>
+		            <p class="audience-label">尚未更新</p>
+		        <br>
+		        </div>
+			    <div class="view-more-container">
+			        <a href="Mirror_French.html" class="view-more-btn">
+			            查看更多鏡面 / 法式作品 <span>→</span>
+			        </a>
+			    </div>
+			</div>
+	    </div>
+		
+		<!-- 自由發揮 -->
+	    <div id="tab-Free-play" class="gallery-content">
+	        <div class="style-detail-card">
+			    <div class="detail-header">
+			        <span class="detail-price-tag">自由發揮：$ 1300</span>
+			        <h3 class="detail-title">自由發揮作品系列</h3>
+			    </div>
+			    
+			    <div class="target-audience">
+			        <p class="audience-label">適合對象：</p>
+			        <div class="tag-group">
+			            <span class="tag">不想跟別人一樣</span>
+			            <span class="tag">不知道該選什麼、但相信專業建議</span>
+			            <span class="tag">喜歡有細節、但不愛過度堆疊</span>
+			            <span class="tag">想要專屬感、而不是套版款</span>
+			        </div>
+			    </div>
+				<div class="grid">
+					<div class="color-item" data-img="img/自由發揮/秋冬款式_1.JPG,img/自由發揮/秋冬款式_2.JPG">
+				        <img src="img/自由發揮/秋冬款式_1.JPG" alt="秋冬INS小花">
+				        <p>秋冬INS小花</p>
+				    </div>
+		            <div class="color-item" data-img="img/自由發揮/櫻桃小熊_1.jpg,img/自由發揮/櫻桃小熊_2.jpg">
+				        <img src="img/自由發揮/櫻桃小熊_1.jpg" alt="櫻桃小熊">
+				        <p>櫻桃小熊</p>
+				    </div>
+		            <div class="color-item" data-img="img/自由發揮/摩卡蝴蝶結小花_1.jpg,img/自由發揮/摩卡蝴蝶結小花_2.jpg">
+				        <img src="img/自由發揮/摩卡蝴蝶結小花_1.jpg" alt="摩卡蝴蝶結小花">
+				        <p>摩卡蝴蝶結小花</p>
+				    </div>
+		        </div>
+			    <div class="view-more-container">
+			        <a href="FreePlay.html" class="view-more-btn">
+			            查看更多自由發揮作品 <span>→</span>
+			        </a>
+			    </div>
+			</div>
+	    </div>
+	    
+	    <!-- 帶圖款式 -->
+	    <div id="tab-Styles-pictures" class="gallery-content">
+	        <div class="style-detail-card">
+			    <div class="detail-header">
+			        <span class="detail-price-tag">價格：👇 點圖看更多細節與價格</span>
+			        <h3 class="detail-title">帶圖款式作品系列</h3>
+			    </div>
+			    
+			    <div class="target-audience">
+			        <p class="audience-label">適合對象：</p>
+			        <div class="tag-group">
+			            <span class="tag">婚禮命定款</span>
+			            <span class="tag">童心未泯系議</span>
+			            <span class="tag">偶像應援款</span>
+			            <span class="tag">酷颯個性派</span>
+			            <span class="tag">送給自己的禮物</span>
+			        </div>
+			    </div>
+				<div class="grid">
+					<div class="color-item" data-img="img/帶圖款式/1000/貓眼_單色/Style小金幣80_巧克力棕_1.JPEG,img/帶圖款式/1000/貓眼_單色/Style小金幣80_巧克力棕_2.JPEG">
+				        <img src="img/帶圖款式/1000/貓眼_單色/Style小金幣80_巧克力棕_1.JPEG">	<!-- 畫面第一張圖片 -->
+				        <p>雙色星軌</p>
+				        <div class="item-price-row">
+				            <span class="price-symbol">NT$</span>
+				            <span class="price-value">1,000</span>
+				        </div>
+				    </div>
+		            <div class="color-item" data-img="img/帶圖款式/1300/法式金領歐蕾_1.JPEG">
+				    	<img src="img/帶圖款式/1300/法式金領歐蕾_1.JPEG">
+				        <p>法式金領歐蕾</p>
+				        <div class="item-price-row">
+				            <span class="price-symbol">NT$</span>
+				            <span class="price-value">1,300</span>
+				        </div>
+				    </div>
+				    <div class="color-item" 
+			    		 data-img="img/帶圖款式/1500/迷霧藕粉/迷霧藕粉_1.JPEG,
+			    		 			  img/帶圖款式/1500/迷霧藕粉/迷霧藕粉_2.JPEG,
+			    		 			  img/帶圖款式/1500/迷霧藕粉/迷霧藕粉_3.JPEG,
+			    		 			  img/帶圖款式/1500/迷霧藕粉/迷霧藕粉_4.JPEG">
+				    	<img src="img/帶圖款式/1500/迷霧藕粉/迷霧藕粉_1.JPEG">
+				        <p>迷霧藕粉</p>
+				        <div class="item-price-row">
+				            <span class="price-symbol">NT$</span>
+				            <span class="price-value">1,500</span>
+				        </div>
+				    </div>
+				    <div class="color-item" data-img="img/帶圖款式/1500/凝時藝術_1.JPEG">
+				    	<img src="img/帶圖款式/1500/凝時藝術_1.JPEG">
+				        <p>凝時藝術</p>
+				        <div class="item-price-row">
+				            <span class="price-symbol">NT$</span>
+				            <span class="price-value">1,500</span>
+				        </div>
+				    </div>
+				    <div class="color-item" 
+				    	 data-img="img/帶圖款式/1700/微醺暮色/微醺暮色_1.JPEG,
+				    		 		  img/帶圖款式/1700/微醺暮色/微醺暮色_2.JPEG,
+				    		 		  img/帶圖款式/1700/微醺暮色/微醺暮色_3.JPEG">
+				    	<img src="img/帶圖款式/1700/微醺暮色/微醺暮色_1.JPEG">
+				        <p>微醺暮色</p>
+				        <div class="item-price-row">
+				            <span class="price-symbol">NT$</span>
+				            <span class="price-value">1,700</span>
+				        </div>
+				    </div>
+		        </div>
+			    <div class="view-more-container">
+			        <a href="Styles_pictures.html" class="view-more-btn">
+			            查看更多帶圖款式作品 <span>→</span>
+			        </a>
+			    </div>
+			</div>
+	    </div>
+	</section>
+
+	<!-- 放大視窗 Modal 他只能獨立在外面 -->
+	<div class="modal" id="previewModal">
+	    <div class="modal-content">
+	        <span class="close-btn">&times;</span>
+	        
+	        <div class="modal-body">
+	            <div class="main-image-area">
+	                <img id="modalImg" src="" alt="">
+	            </div>
+	
+	            <div class="thumbnail-list" id="thumbList">
+	                </div>
+	        </div>
+	
+	        <div class="modal-footer">
+	            <p id="modalText"></p>
+	            <div id="imageCounter"></div>
+	        </div>
+	    </div>
+	</div>
+	
+	<footer class="footer">
+	  <div>
+	    <h4>聯絡我們</h4>
+	    
+	    <address>
+	      <p>
+	        <span class="icon">📍</span> 
+	        中山捷運站6號出口走路4分鐘
+	      </p>
+	      
+	      <p>
+	        <span class="icon">📩</span> 
+	        s100614290617@gmail.com
+	      </p>
+	    </address>
+	  </div>
+	</footer>
+	
+</body>
+</html>

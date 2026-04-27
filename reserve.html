@@ -1,0 +1,300 @@
+<!-- 預約 -->
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+	<link rel="stylesheet" href="CSS/index.css">
+	<link rel="stylesheet" href="CSS/reserve.css">
+	<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>		<!-- 使用Flatpickr插件 -->
+	<title>嚕咪美學 Lumi Beauty｜中山美甲・韓式水飛梭・小臉拉提・穿戴甲</title>
+	<script src="JS/index.js"></script>
+	<script src="JS/reverse.js"></script>
+</head>	
+<body>
+
+    <div class="container">
+        <header>
+            <h1>線上預約服務</h1>
+            <p>請填寫以下資訊，我們將盡快為您確認時段</p>
+        </header>
+
+        <form id="bookingForm">
+            <section class="form-group">
+			    <label>選擇預約項目 (可多選)</label>
+			    <div class="service-selection-grid">
+			        <div class="service-card">
+			            <input type="checkbox" name="main-service" value="nail" id="mainNail">
+			            <label for="mainNail" class="service-card-content">
+			                <span class="icon">💅</span>
+			                <span class="name">美甲服務</span>
+			                <span class="desc">凝膠 / 保養 / 卸甲</span>
+			            </label>
+			        </div>
+			
+			        <div class="service-card">
+			            <input type="checkbox" name="main-service" value="facial" id="mainFacial">
+			            <label for="mainFacial" class="service-card-content">
+			                <span class="icon">✨</span>
+			                <span class="name">精緻臉臉</span>
+			                <span class="desc">韓式水飛梭 / 小臉拉提 / 女神美背</span>
+			            </label>
+			        </div>
+			        
+			        <div class="service-card">
+			            <input type="checkbox" name="main-service" value="other" id="mainOther">
+			            <label for="mainOther" class="service-card-content">
+			                <span class="icon">📋</span>
+			                <span class="name">其他加購項目</span>
+			                <span class="desc">手腳深層保養 / 純卸甲 / 冰光舒敏管理 </span>
+			            </label>
+			        </div>
+			    </div>
+				
+				<!--  美甲服務  -->
+			    <div id="nailDetailArea" class="sub-service-area" style="display: none;">
+				    <p class="sub-title">💅 美甲預約細節</p>
+				    
+				    <div class="sub-group">
+				        <label>預約項目</label>
+				        <select id="nailPart">
+				            <option value="hand">僅施作手部</option>
+				            <option value="foot">僅施作腳部</option>
+				            <option value="both">手腳同時預約</option>
+				        </select>
+				    </div>
+				
+				    <hr style="border: 0.5px solid #eee; margin: 20px 0;">
+				
+				    <div id="handDetailGroup">
+				        <p style="font-weight: bold; color: #8E7366;">[ 手部款式與需求 ]</p>
+				        <div class="sub-group">
+				            <label>手部款式</label>
+				            <select id="handStyle" class="nail-calc-trigger">
+				                <option value="0">請選擇手部款式...</option>
+				                <option value="950">單色 ($950)</option>
+				                <option value="1050">貓眼 ($1050)</option>
+				                <option value="1250">鏡面/法式 ($1250)</option>
+				                <option value="1300">自由發揮 ($1300)</option>
+				                <option value="1399">帶圖報價 ($1399起)</option>
+				            </select>
+				        </div>
+				        <div class="sub-group">
+				            <label>手部卸甲</label>
+				            <select id="handRemove" class="nail-calc-trigger" disabled style="opacity: 0.6;">
+				                <option value="0">不需卸甲</option>
+				                <option value="150">本店卸甲續做 ($150)</option>
+				                <option value="300">他店卸甲續做 ($300)</option>
+				            </select>
+				        </div>
+				        <div class="sub-group">
+				            <div class="option-check">
+				                <input type="checkbox" id="handCare" value="500" class="nail-calc-trigger" disabled>
+				                <label for="handCare" style="opacity: 0.5;" id="handCareLabel">手部升級深層保養 (+$500)</label>
+				            </div>
+				        </div>
+				    </div>
+				
+				    <div id="footDetailGroup" style="margin-top: 20px; display: none;">
+				        <p style="font-weight: bold; color: #8E7366;">[ 腳部款式與需求 ]</p>
+				        <div class="sub-group">
+				            <label>腳部款式</label>
+				            <select id="footStyle" class="nail-calc-trigger">
+				                <option value="0">請選擇腳部款式...</option>
+				                <option value="1150">單色 ($1100)</option>
+				                <option value="1250">貓眼 ($1200)</option>
+				                <option value="1450">鏡面/法式 ($1350)</option>
+				                <option value="1500">自由發揮 ($1400)</option>
+				                <option value="1599">帶圖報價 ($1499起)</option>
+				            </select>
+				        </div>
+				        <div class="sub-group">
+				            <label>腳部卸甲</label>
+				            <select id="footRemove" class="nail-calc-trigger" disabled style="opacity: 0.6;">
+				                <option value="0">不需卸甲</option>
+				                <option value="150">本店卸甲續做 ($150)</option>
+				                <option value="300">他店卸甲續做 ($300)</option>
+				            </select>
+				        </div>
+				        <div class="sub-group">
+				            <div class="option-check">
+				                <input type="checkbox" id="footCare" value="500" class="nail-calc-trigger" disabled>
+				                <label for="footCare" style="opacity: 0.5;" id="footCareLabel">腳部升級深層保養 (+$500)</label>
+				            </div>
+				        </div>
+				    </div>
+				</div>
+				
+				<!--  精緻臉臉  -->
+			    <div id="facialDetailArea" class="sub-service-area" style="display: none;">
+				    <p class="sub-title">✨ 臉部與身體保養 (可多選)</p>
+				    <div class="sub-group">
+				        <label>施作項目</label>
+				        <div class="checkbox-group">
+				            <label class="check-item">
+				                <input type="checkbox" name="facial" value="1999" data-name="韓式水飛梭" data-time="90"> 
+				                <span>韓式水飛梭 $1999 (90min)</span>
+				            </label>
+				            <label class="check-item">
+				                <input type="checkbox" name="facial" value="1999" data-name="小臉拉提" data-time="30"> 
+				                <span>小臉拉提 $1999 (30min)</span>
+				            </label>
+				            <label class="check-item">
+				                <input type="checkbox" name="facial" value="1999" data-name="女神美背" data-time="45"> 
+				                <span>女神美背 $1999 (45min)</span>
+				            </label>
+				        </div>
+				    </div>
+				</div>
+
+			    <!--  其他項目  -->
+			    <div id="otherDetailArea" class="sub-service-area" style="display: none;">
+			        <p class="sub-title">✨ 其他加購項目</p>
+			        <div class="sub-group">
+			            <label>施作項目</label>
+			            <select id="otherType">
+			                <option value="0">請選擇項目...</option>
+			                <option value="500">純卸甲($500)</option>
+			                <option value="700">深層保養(手/腳)($700)</option>
+			            </select>
+			        </div>
+			    </div>
+			
+			    <div id="priceDisplay" class="price-tag">預估總金額：$ <span id="totalPrice">0</span></div>
+			</section>
+
+            <div class="booking-container">
+			    <section class="form-group">
+			        <label for="appointmentDate">預約日期</label>
+			        <input type="text" id="appointmentDate" placeholder="請選擇日期" required>
+			    </section>
+			
+			    <section class="form-group">
+			        <label>可預約時段</label>
+			        <div id="timeSlotsContainer" class="time-slots">
+			            <p class="hint-text">請先選擇日期以查看剩餘時段</p>
+			        </div>
+			    </section>
+			
+			    <input type="hidden" id="selectedTime" name="selectedTime">
+			</div>
+
+            <section class="form-group">
+                <label>您的姓名</label>
+                <input type="text" id="custName" placeholder="請輸入姓名" required>
+
+                <label>您的電話</label>
+                <input type="number" id="custPhone" placeholder="請輸入電話號碼" required>
+            </section>
+			
+			<section class="form-group notice-section">
+			    <label>預約注意事項</label>
+			    <div class="notice-box">
+			        <ul>
+			            <li>✨ <strong>預約保留：</strong> 預約僅保留 10 分鐘，逾時將自動取消並開放現場候補。</li>
+			            <li>✨ <strong>變更取消：</strong> 若需取消或更改時段，請於預約日前 24 小時私訊 LINE 告知。</li>
+			            <li>✨ <strong>施作時間：</strong> 基礎美甲約需 1.5-2 小時，請預留足夠時間以免行程倉促。</li>
+			            <li>✨ <strong>健康狀況：</strong> 若指甲有霉菌、受傷或嚴重發炎，請先行就醫，本店暫不提供施作。</li>
+			            <li>✨ <strong>攜伴規定：</strong> 為維護服務品質與場域空間，恕不接受攜伴與寵物，敬請見諒。</li>
+			        </ul>
+			    </div>
+			    <div class="agree-check">
+			        <input type="checkbox" id="agreeNotice" required>
+			        <label for="agreeNotice">我已詳細閱讀並同意上述「預約注意事項」</label>
+			    </div>
+			</section>
+			
+            <button type="submit" class="submit-btn">送出預約</button>
+        </form>
+    </div>
+    
+    <script>
+	    document.getElementById('bookingForm').addEventListener('submit', async function(e) {
+	        e.preventDefault(); 
+	
+	        // --- 1. 抓取客戶基本資訊 ---
+	        const name = document.getElementById('custName').value;
+	        const phone = document.getElementById('custPhone').value;
+	        const date = document.getElementById('appointmentDate').value;
+	        const time = document.getElementById('selectedTime').value;
+	
+	        // --- 2. 抓取並判斷預約項目 ---
+	        let selectedServices = [];
+	        
+	        // 檢查美甲
+	        if(document.getElementById('mainNail').checked) {
+	            const nailDetail = document.getElementById('nailPart').value;
+	            // 這裡可以更精細一點，轉換成中文顯示
+	            const partText = nailDetail === 'hand' ? '手部' : (nailDetail === 'foot' ? '腳部' : '手腳同時');
+	            selectedServices.push(`美甲(${partText})`);
+	        }
+	        // 檢查臉部 (多選)
+	        const facials = document.querySelectorAll('input[name="facial"]:checked');
+	        facials.forEach(item => {
+	            selectedServices.push(item.getAttribute('data-name'));
+	        });
+	        // 檢查其他
+	        if(document.getElementById('mainOther').checked) {
+	            const otherSelect = document.getElementById('otherType');
+	            const otherName = otherSelect.options[otherSelect.selectedIndex].text;
+	            selectedServices.push(otherName !== "請選擇項目..." ? otherName : "其他加購");
+	        }
+	
+	        // ⭐【關鍵新增：阻擋邏輯】⭐
+	        // 如果選取的項目陣列長度為 0，代表一個都沒勾
+	        if (selectedServices.length === 0) {
+	            alert("請至少選擇一項預約服務（美甲、精緻臉臉或加購項目）喔！");
+	            // 滾動到最上方讓用戶看到服務選擇區
+	            window.scrollTo({ top: 0, behavior: 'smooth' });
+	            return; // 直接中斷，不執行後面的 fetch
+	        }
+	
+	        // --- 3. 檢查必填欄位 ---
+	        if(!name || !phone || !date || !time) {
+	            alert("請填寫姓名、電話並選擇預約日期與時間喔！");
+	            return;
+	        }
+	
+	        const serviceString = selectedServices.join(', ');
+	
+	        // --- 4. 打包資料 ---
+	        const bookingData = {
+	            name: name,
+	            phone: phone,
+	            service: serviceString,
+	            time: `${date} ${time}`
+	        };
+	
+	        // --- 5. 寄送到 Google ---
+	        const googleAppScriptUrl = 'https://script.google.com/macros/s/AKfycbzS82MQoA1WbEk98cmzi13cip0Zb-6AedakWslWtAckh-DhQN8x3otAHB-m_yJf8U9L/exec';
+	
+	     	// 修改原本的 fetch 段落
+	        try {
+	            const btn = document.querySelector('.submit-btn');
+	            btn.innerText = "傳送中...";
+	            btn.disabled = true;
+
+	            // 將資料轉為 URLSearchParams 或直接傳 JSON
+	            // 這裡建議配合 GAS 的 doPost(e) 處理 JSON
+	            const response = await fetch(googleAppScriptUrl, {
+	                method: 'POST',
+	                body: JSON.stringify(bookingData) // 直接傳送 JSON 字串
+	            });
+
+	            // 注意：若 GAS 使用 no-cors，這裡會抓不到 response.ok
+	            alert('預約已送出！請稍後確認 TimeTree 是否同步成功。');
+	            
+	        } catch (error) {
+	            console.error('發生錯誤:', error);
+	            alert('送出失敗，請聯繫我們。');
+	        } finally {
+	            const btn = document.querySelector('.submit-btn');
+	            btn.innerText = "送出預約";
+	            btn.disabled = false;
+	        }
+	    });
+	</script>
+</body>
+</html>

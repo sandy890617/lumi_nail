@@ -1,0 +1,537 @@
+@charset "UTF-8";
+
+/* 基礎背景與字體 */
+/* --- 1. 引入字體 --- */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&family=Noto+Sans+TC:wght@300;400;500&family=Playfair+Display:wght@700&display=swap');
+
+/* --- 2. 核心色調與變數 --- */
+:root {
+    --primary-color: #8E7366;       /* 標題、重點按鈕 */
+    --accent-color: #B298DC;        /* 強調紫色、按鈕背景 */
+    --text-dark: #5D5451;           /* 內文 */
+    --bg-main: #F2EDE8;             /* 背景色 */
+    --bg-card: #FBF9F7;             /* 表單底色 */
+    --white: #FFFFFF;               
+}
+
+/* --- 3. 基礎與排版設定 --- */
+body {
+    background-color: var(--bg-main); /* 使用大地色背景 */
+    color: var(--text-dark);
+    font-family: 'Noto Sans TC', "Microsoft JhengHei", sans-serif;
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+    margin: 0;
+    line-height: 1.6;
+}
+
+  /* 表單卡片容器 */
+  .booking-card {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    width: 100%;
+    max-width: 400px;
+  }
+
+  h2 { color: #4a4a4a; margin-bottom: 20px; text-align: center; }
+
+  /* 欄位樣式 */
+  .form-group { margin-bottom: 15px; }
+  label { display: block; margin-bottom: 5px; color: #666; font-size: 0.9em; }
+  
+  select, input[type="date"], input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-sizing: border-box; /* 確保寬度包含內距，這行非常重要 */
+    height: 45px;           /* 建議統一高度，與你的日期輸入框一致 */
+}
+/* 針對 form-group 內的所有 input 做統一設定 */
+.form-group input, .form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-sizing: border-box;
+    height: 45px;
+    font-size: 1rem;
+}
+
+/* 針對 Chrome, Safari, Edge, Opera */
+input#custPhone::-webkit-outer-spin-button,
+input#custPhone::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* 針對 Firefox */
+input#custPhone[type="number"] {
+    -moz-appearance: textfield;
+}
+
+
+/* 修正「手部升級深層保養」的對齊 */
+.sub-group .option-check {
+    display: flex;          /* 使用彈性佈局 */
+    align-items: center;    /* 垂直置中：讓勾選框跟文字在同一水平線上 */
+    gap: 10px;              /* 勾選框與文字間的距離 */
+    padding: 5px 0;         /* 增加一點上下間距，避免太擠 */
+    cursor: pointer;
+}
+
+/* 確保勾選框本身的大小固定，不會被擠壓 */
+.sub-group .option-check input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin: 0;              /* 移除瀏覽器預設的外距 */
+    flex-shrink: 0;         /* 防止在大螢幕下被擠扁 */
+    cursor: pointer;
+}
+
+/* 修正標籤文字，確保它不會換行跑掉 */
+.sub-group .option-check label {
+    margin-bottom: 0;       /* 移除原本 label 可能有的下外距 */
+    line-height: 1;         /* 讓文字高度與勾選框一致 */
+    cursor: pointer;
+    font-size: 14px;
+}
+  
+  /* 確保下拉選單符合大地色系 */
+select#serviceSelect {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--primary-color);
+    background-color: var(--white);
+    color: var(--text-dark);
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    appearance: none; /* 去除原生樣式 */
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238E7366' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 1em;
+}
+
+/* 載入中狀態的暫存樣式 */
+select#serviceSelect:disabled {
+    background-color: #eee;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+
+  /* 時段按鈕排版 */
+  .time-slots {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .time-btn {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .time-btn:hover { background: #f0f0f0; border-color: #bbb; }
+  .time-btn.active { background: #6c5ce7; color: white; border-color: #6c5ce7; }
+
+  /* 送出按鈕 */
+  .submit-btn {
+    width: 100%;
+    background: #6c5ce7;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 16px;
+    margin-top: 20px;
+    cursor: pointer;
+  }
+  
+  /* 注意事項 */
+  /* 注意事項外框 */
+.notice-section {
+    margin-top: 30px;
+    text-align: left;
+}
+
+.notice-box {
+    background-color: #fcfaf8; /* 極淺的溫潤色 */
+    border: 1px solid #eee;
+    padding: 20px;
+    border-radius: 12px;
+    font-size: 14px;
+    line-height: 1.8;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.notice-box ul {
+    list-style: none; /* 去除預設點點 */
+    padding: 0;
+    margin: 0;
+}
+
+.notice-box li {
+    margin-bottom: 8px;
+    position: relative;
+    padding-left: 5px;
+}
+
+/* 服務卡片容器 */
+.service-selection-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 改為三欄平均分配 */
+    gap: 10px; /* 稍微縮小間距，確保三個卡片在手機或窄螢幕時不會太擠 */
+    margin-bottom: 20px;
+}
+
+.service-card {
+    position: relative;
+}
+
+/* 隱藏原生 checkbox */
+.service-card input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0; width: 0;
+}
+
+/* 自定義卡片外觀 */
+.service-card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px 5px; /* 減少左右內距 */
+    background: #fff;
+    border: 2px solid #eee;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-height: 120px; /* 統一高度會比較美觀 */
+    text-align: center;
+}
+
+.service-card-content:hover {
+    border-color: #d8b6a4;
+    background: #fdfaf8;
+}
+
+/* 選中時的狀態 */
+.service-card input:checked + .service-card-content {
+    border-color: #d8b6a4;
+    background: #fdfaf8;
+    box-shadow: 0 5px 15px rgba(216, 182, 164, 0.2);
+}
+
+.service-card .icon {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.service-card .name {
+    font-weight: bold;
+    color: #5b4a42;
+    font-size: 14px;
+}
+
+.service-card .desc {
+    font-size: 11px;
+    color: #aaa;
+    margin-top: 5px;
+}
+
+/* 下拉細項的平滑顯示 */
+.sub-service-area {
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 10px;
+    animation: fadeIn 0.4s ease;
+}
+
+/* 當 checkbox 被禁用時，讓文字變灰 */
+input[disabled] + label {
+    color: #ccc;
+    cursor: not-allowed;
+}
+
+/* 讓整塊區域看起來有鎖定的感覺 */
+.option-check input:disabled {
+    filter: grayscale(1);
+    opacity: 0.5;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.check-item {
+    display: flex;
+    align-items: center;
+    background-color: #fcf9f5; /* 淺奶茶色 */
+    border: 1px solid #e8decb;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.check-item input {
+    margin-right: 12px;
+    width: 18px;
+    height: 18px;
+    accent-color: #c2a68e; /* 奶茶深色主調 */
+}
+
+.check-item:has(input:checked) {
+    background-color: #f2e9e1;
+    border-color: #c2a68e;
+}
+
+/* 同意勾選區 */
+.agree-check {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* 居中 */
+    gap: 10px;
+    font-size: 14px;
+    color: #555;
+    cursor: pointer;
+}
+
+.agree-check input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: #d8b6a4; /* 勾選後的莫蘭迪粉色 */
+}
+
+/* 修正按鈕間距 */
+.submit-btn {
+    margin-top: 20px;
+    /* 這裡可以維持你原本的樣式，但確保它在勾選框下方 */
+}
+
+/* 細項區塊樣式 */
+.sub-service-area {
+    background: #fdfaf8; /* 奶茶色背景 */
+    border: 1px solid #eee;
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 15px;
+    animation: slideDown 0.3s ease-out;
+}
+
+.sub-title {
+    font-weight: bold;
+    color: #8E7366;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #e0d5ce;
+    padding-bottom: 8px;
+}
+
+.sub-group {
+    margin-bottom: 15px;
+}
+
+.sub-group label {
+    font-size: 14px;
+    margin-bottom: 5px;
+    display: block;
+    color: #555;
+}
+
+.sub-group select {
+    width: 100%;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+}
+
+/* 勾選框小微調 */
+.option-check {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #666;
+    cursor: pointer;
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* --- 4. 動態預約時段擴充樣式 --- */
+
+/* 日期選擇器微調 - 確保跟整體色調一致 */
+input[type="date"]#appointmentDate {
+    border: 1px solid var(--primary-color);
+    color: var(--text-dark);
+    font-family: inherit;
+}
+
+/* 時段容器佈局 */
+.time-slots {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-top: 10px;
+    min-height: 50px; /* 防止內容切換時閃爍 */
+}
+
+/* 基礎按鈕樣式 - 預設為「奶茶色背景」與「深色文字」 */
+.time-btn {
+    background: var(--white);
+    border: 1.5px solid var(--bg-main);
+    padding: 12px;
+    border-radius: 10px;
+    color: var(--text-dark);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+}
+
+/* 滑過效果 */
+.time-btn:hover:not(:disabled) {
+    border-color: var(--primary-color);
+    background-color: var(--bg-card);
+    transform: translateY(-2px);
+}
+
+/* 被選中時的狀態 - 使用你定義的 primary-color */
+.time-btn.active {
+    background-color: var(--primary-color);
+    color: var(--white);
+    border-color: var(--primary-color);
+    box-shadow: 0 4px 10px rgba(142, 115, 102, 0.3);
+}
+
+/* 特殊標記：例如 18:30 加開時段的微弱呼吸光暈 (選用) */
+.time-btn.special-slot {
+    border-style: dashed;
+    border-color: var(--accent-color);
+}
+
+/* 已滿或不可選狀態 */
+.time-btn:disabled, 
+.time-btn.full {
+    background-color: #f0f0f0;
+    border-color: #e0e0e0;
+    color: #ccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* 提示文字樣式 */
+.hint-text, .full-text {
+    grid-column: span 2;
+    text-align: center;
+    padding: 15px;
+    font-size: 14px;
+    color: var(--primary-color);
+    background: var(--bg-card);
+    border-radius: 8px;
+    border: 1px dashed var(--main-cream);
+}
+
+.full-text {
+    color: #a9a9a9;
+    background: #f8f8f8;
+}
+
+/* 讀取動畫效果 */
+@keyframes pulse-cream {
+    0% { opacity: 0.6; }
+    50% { opacity: 1; }
+    100% { opacity: 0.6; }
+}
+
+.loading-text {
+    grid-column: span 2;
+    text-align: center;
+    color: var(--dark-cream);
+    animation: pulse-cream 1.5s infinite;
+}
+
+/* 預設樣式（灰色） */
+.calendar-day {
+  color: #cccccc; /* 灰色字體 */
+  background-color: transparent;
+  cursor: not-allowed;
+}
+
+/* 有時段的樣式（亮色） */
+.calendar-day.is-available {
+  color: #ffffff; /* 白色字體 */
+  background-color: #007bff; /* 藍色背景 */
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.time-btn.full {
+    background-color: #f0f0f0; /* 淺灰色 */
+    color: #ccc;               /* 灰色文字 */
+    border-color: #e0e0e0;
+    cursor: not-allowed;       /* 滑鼠圖標變禁用 */
+    opacity: 0.7;
+}
+
+/* 日曆中可點選的日期（黑色） */
+.flatpickr-day:not(.flatpickr-disabled) {
+    color: #333333 !important;
+    font-weight: 500;
+}
+
+/* 日曆中不可點選的日期（灰色） */
+.flatpickr-day.flatpickr-disabled {
+    color: #cccccc !important;
+    cursor: not-allowed;
+}
+
+/* 讓當天日期有淡淡的背景色區分 */
+.flatpickr-day.today {
+    border-color: #e0d5c1 !important; /* 你的奶油風色系 */
+}
+
+/* 選中日期的顏色 */
+.flatpickr-day.selected {
+    background: #d4a373 !important; /* 你的主色調 */
+    border-color: #d4a373 !important;
+    color: white !important;
+}
+
+#appointmentDate {
+    text-align: center;      /* 水平置中文字 */
+    height: 45px;            /* 設定一個固定的高度 */
+    line-height: 45px;       /* 設定行高與高度一致，達成垂直置中 */
+    padding: 0;              /* 清除預設內距，避免偏移 */
+    box-sizing: border-box;  /* 確保高度計算包含邊框 */
+}
+
+/* 針對行動裝置或不同瀏覽器的 placeholder 置中 */
+#appointmentDate::placeholder {
+    text-align: center;
+}

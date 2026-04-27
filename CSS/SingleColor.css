@@ -1,0 +1,248 @@
+@charset "UTF-8";
+
+/* ==========================================
+   1. 基礎頁面佈局與導覽區 (Page Layout)
+   ========================================== */
+
+.gallery-page-container {
+    max-width: 1200px;         /* 限制最大寬度，避免在大螢幕上過於分散 */
+    margin: 0 auto;            /* 內容水平置中 */
+    padding: 100px 20px 40px;  /* 上方留 100px 是為了避開固定的導覽列 */
+}
+
+.gallery-header {
+    margin-bottom: 40px;       /* 標題與下方作品網格的間距 */
+}
+
+.header-nav {
+    margin-bottom: 20px;       /* 返回按鈕與標題文字的間距 */
+}
+
+/* 返回按鈕樣式 */
+.back-home-btn {
+    display: inline-block;
+    padding: 8px 20px;
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    border-radius: 50px;       /* 圓角膠囊形狀 */
+    text-decoration: none;     /* 移除超連結下劃線 */
+    font-size: 14px;
+    transition: all 0.3s ease; /* 設定顏色切換時的過渡動畫 */
+}
+
+.back-home-btn:hover {
+    background-color: var(--primary-color); /* 滑鼠懸停時填充顏色 */
+    color: #fff !important;
+}
+
+.header-info {
+    text-align: left;          /* 標題文字靠左對齊 */
+}
+
+.gallery-title {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+    font-family: 'Noto Serif TC', serif; /* 使用明體字增加高級感 */
+}
+
+.gallery-subtitle {
+    font-size: 1.1rem;
+    color: #888;               /* 價格文字使用灰色與標題區隔 */
+}
+
+/* ==========================================
+   2. 作品網格系統 (Gallery Grid)
+   ========================================== */
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 電腦版：固定為 5 欄 */
+    gap: 15px;                             /* 圖片之間的間隙 */
+}
+
+.color-item {
+    background: #fff;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05); /* 卡片淡淡的陰影 */
+    text-align: center;
+    cursor: zoom-in;                       /* 滑鼠移上去顯示放大鏡符號 */
+    transition: transform 0.3s ease;        /* 設定卡片位移的動畫 */
+}
+
+.color-item:hover {
+    transform: translateY(-5px);           /* 懸停時卡片向上浮起 5px */
+}
+
+.color-item img {
+    width: 100%;
+    height: 180px;             /* 固定高度，確保網格整齊 */
+    object-fit: cover;         /* 裁切圖片以填滿容器，防止比例變形 */
+    border-radius: 5px;
+}
+
+.color-item p {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #555;               /* 作品名稱顏色 */
+}
+
+/* ==========================================
+   3. 彈出視窗：背景與動畫 (Modal Container)
+   ========================================== */
+
+.modal {
+    display: none;             /* 預設隱藏，由 JS 切換為 flex */
+    position: fixed;           /* 固定在螢幕上 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* 黑色半透明背景 */
+    backdrop-filter: blur(8px);           /* 背景模糊效果 */
+    z-index: 9999;                        /* 確保層級在最前面 */
+    justify-content: center;              /* 內容水平置中 */
+    align-items: center;                  /* 內容垂直置中 */
+}
+
+.modal-content {
+    background: #fff;
+    padding: 25px;
+    border-radius: 16px;
+    position: relative;
+    width: 90%;
+    max-width: 1000px;         /* 限制最大寬度，避免在大螢幕過寬 */
+    max-height: 90vh;          /* 限制最大高度，避免超出視窗 */
+    margin: auto;
+    text-align: center;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+    animation: zoomIn 0.3s ease;            /* 調用縮放進入動畫 */
+}
+
+/* 關閉按鈕 (X) */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 30px;
+    cursor: pointer;
+    color: #333;
+    z-index: 10;
+}
+
+/* ==========================================
+   4. 彈出視窗：內部排版 (Modal Body)
+   ========================================== */
+
+.modal-body {
+    display: flex;             /* 彈性佈局 */
+    flex-direction: row;       /* 電腦版：左右排列 */
+    gap: 30px;
+    align-items: flex-start;
+    margin-top: 10px;
+}
+
+/* 左側大圖顯示區 */
+.main-image-area {
+    flex: 2;                   /* 佔據 2/3 的空間 */
+    text-align: center;
+}
+
+.main-image-area img {
+    width: 100%;
+    max-height: 70vh;
+    object-fit: contain;       /* 確保圖片完整顯示不被裁切 */
+    border-radius: 8px;
+}
+
+/* 右側縮圖清單 */
+.thumbnail-list {
+    flex: 0 0 120px;           /* 固定寬度 120px */
+    display: flex;
+    flex-direction: column;    /* 垂直排列 */
+    gap: 12px;
+    max-height: 65vh;          /* 限制高度以啟動捲動 */
+    overflow-y: auto;          /* 內容過多時顯示垂直捲動條 */
+    padding-right: 5px;
+    scrollbar-width: none;     /* Firefox 隱藏捲軸 */
+    -ms-overflow-style: none;  /* IE 隱藏捲軸 */
+}
+
+/* 隱藏 Chrome/Safari 捲軸，讓介面更美觀 */
+.thumbnail-list::-webkit-scrollbar {
+    display: none;
+}
+
+.thumb-item {
+    width: 100%;
+    aspect-ratio: 1/1;         /* 強制縮圖為正方形 */
+    object-fit: cover;
+    border-radius: 6px;
+    cursor: pointer;
+    border: 3px solid transparent; /* 預設無邊框 */
+    opacity: 0.6;              /* 非選取狀態半透明 */
+    transition: 0.2s;
+    flex-shrink: 0;            /* 防止縮圖被擠壓變形 */
+}
+
+/* 當前點選中的縮圖 */
+.thumb-item.active {
+    border-color: #d8b6a4;     /* 選中時的邊框顏色 (莫蘭迪色) */
+    opacity: 1;                /* 取消透明度 */
+}
+
+.modal-footer {
+    margin-top: 15px;
+    color: #555;
+}
+
+/* ==========================================
+   5. 動畫定義與響應式設計 (Responsive)
+   ========================================== */
+
+@keyframes zoomIn {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* 平板尺寸 (900px 以下) */
+@media (max-width: 900px) {
+    .grid { grid-template-columns: repeat(3, 1fr); } /* 改為一排 3 張 */
+}
+
+/* 手機版適配 (768px 以下) */
+@media (max-width: 768px) {
+    .gallery-page-container { padding-top: 80px; }
+    
+    .grid { grid-template-columns: repeat(2, 1fr); } /* 改為一排 2 張 */
+    
+    .gallery-title { font-size: 1.5rem; }
+
+    /* 重點：手機版將 Modal 排版改為上下排列 */
+    .modal-body {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    /* 手機版縮圖列表改為橫向排列 */
+    .thumbnail-list {
+        flex-direction: row; 
+        width: 100%;
+        height: auto;
+        flex: none;
+        overflow-x: auto;      /* 改為水平捲動 */
+        padding-bottom: 5px;
+    }
+
+    .thumb-item {
+        width: 60px;           /* 手機版縮圖縮小 */
+    }
+}
+
+/* 極小螢幕手機 (480px 以下) */
+@media (max-width: 480px) {
+    .grid { gap: 10px; }
+    .color-item img { height: 140px; } /* 縮小圖片高度 */
+}

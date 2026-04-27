@@ -1,0 +1,104 @@
+<!-- 單色作品展示 -->
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="CSS/SingleColor.css">
+	<link rel="stylesheet" href="CSS/index.css">
+	<title>嚕咪美學 Lumi Beauty｜中山美甲・韓式水飛梭・小臉拉提・穿戴甲</title>
+	<script src="JS/index.js"></script>
+	<script src="JS/Manicure.js"></script>
+</head>
+<body >
+	<nav class="navbar">
+	    <div class="nav-container">
+	        <a href="index.html" class="logo">嚕 咪 美 學</a>
+			
+			<!-- 手機/小螢幕版的"漢堡選單按鈕" -->
+	        <button class="menu-toggle" id="mobile-menu">
+	            <span class="bar"></span>	<!-- 漢堡的一條線 -->
+	            <span class="bar"></span>
+	            <span class="bar"></span>
+	        </button>
+	        
+	        <ul class="nav-links" id="nav-links">
+	            <li><a href="index.html">首頁</a></li>
+	            <li><a href="Manicure.html">美甲服務</a></li>
+	            <li><a href="HydraFacial.html">韓式精緻美學</a></li>
+	            <li><a href="press_nails.html">穿戴甲</a></li>
+	            <li><a href="#">關於我們</a></li>
+	            <li><a href="#" class="nav-cta">立即預約</a></li>
+	        </ul>
+    	</div>
+	</nav>
+	
+	<!-- 呈現作品的地方 -->
+	<div class="gallery-page-container">
+    
+	    <header class="gallery-header">
+	        <div class="header-nav">
+	            <a href="Manicure.html" class="back-home-btn">← 返回價目表</a>
+	        </div>
+	        <div class="header-info">
+	            <h1 class="gallery-title">單色作品全系列</h1>
+	            <p class="gallery-subtitle">基礎單色：$ 950</p>
+	        </div>
+	    </header>
+	
+	    <main class="grid">
+	        <div class="color-item" data-img="img/單色/HanHan 016.jpg,img/588254718087135799.jpg,img/line_oa_chat_250818_095451.jpg">
+		        <img src="img/單色/HanHan 016.jpg" alt="HanHan 016">
+		        <p>HanHan 016</p>
+		    </div>
+            <div class="color-item" data-img="img/單色/匠 G23M.jpg,img/單色//HanHan 016.jpg,img/單色/匠 G23M.jpg">
+                <img src="img/單色/匠 G23M.jpg" alt="匠 G23M" loading="lazy">
+                <p>匠 G23M</p>
+            </div>
+            <div class="color-item" data-img="img/單色/S_INSYOU_16/INSYOU_16.jpg">
+		        <img src="img/單色/S_INSYOU_16/INSYOU_16.jpg" alt="INSYOU 16">
+		        <p>INSYOU 16</p>
+		    </div>
+		    <div class="color-item" 
+		    	data-img="img/單色/S_INSYOU_21/S_INSYOU_21_1.JPEG,
+		    				 img/單色/S_INSYOU_21/S_INSYOU_21_2.JPEG,
+		    				 img/單色/S_INSYOU_21/S_INSYOU_21_3.JPEG">
+		        <img src="img/單色/S_INSYOU_21/S_INSYOU_21_1.JPEG" alt="INSYOU 21">
+		        <p>INSYOU 21</p>
+		    </div>
+          	<div class="color-item" data-img="img/單色/S_INSYOU_43/1.jpg,img/單色/S_INSYOU_43/2.jpg,img/單色/S_INSYOU_43/3.jpg,img/單色/S_INSYOU_43/4.jpg">
+		        <img src="img/單色/S_INSYOU_43/1.jpg" alt="INSYOU 43">
+		        <p>INSYOU 43</p>
+		    </div>
+		    <div class="color-item" data-img="img/單色/MODING/F30_1.jpg,img/單色/MODING/F30_2.jpg">
+		        <img src="img/單色/MODING/F30_1.jpg" alt="F30">
+		        <p>F30</p>
+		    </div>
+		    <div class="color-item" data-img="img/單色/午夜櫻桃/午夜櫻桃_1.JPEG,img/單色/午夜櫻桃/午夜櫻桃_2.JPEG">
+		        <img src="img/單色/午夜櫻桃/午夜櫻桃_1.JPEG" alt="午夜櫻桃">
+		        <p>午夜櫻桃(特調色)</p>
+		    </div>
+		</main>
+
+	</div>
+	<!-- 放大視窗 Modal 他只能獨立在外面 -->
+	<div class="modal" id="previewModal">
+	    <div class="modal-content">
+	        <span class="close-btn">&times;</span>
+	        
+	        <div class="modal-body">
+	            <div class="main-image-area">
+	                <img id="modalImg" src="" alt="">
+	            </div>
+	
+	            <div class="thumbnail-list" id="thumbList">
+	                </div>
+	        </div>
+	
+	        <div class="modal-footer">
+	            <p id="modalText"></p>
+	            <div id="imageCounter"></div>
+	        </div>
+	    </div>
+    </div>
+</body>
+</html>

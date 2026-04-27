@@ -1,0 +1,354 @@
+<!-- 穿戴甲專區 -->
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="CSS/HydraFacial.css">
+	<link rel="stylesheet" href="CSS/press-on-nails.css">
+	<script src="JS/press-on-nails.js"></script>
+	
+	<link rel="stylesheet" href="CSS/index.css">
+	<title>嚕咪美學 Lumi Beauty｜中山美甲・韓式水飛梭・小臉拉提・穿戴甲</title>
+	<script src="JS/index.js"></script>
+</head>
+<body>
+	 <nav class="navbar">
+	    <div class="nav-container">
+	        <a href="index.html" class="logo">嚕 咪 美 學</a>
+			
+			<!-- 手機/小螢幕版的"漢堡選單按鈕" -->
+	        <button class="menu-toggle" id="mobile-menu">
+	            <span class="bar"></span>	<!-- 漢堡的一條線 -->
+	            <span class="bar"></span>
+	            <span class="bar"></span>
+	        </button>
+	        
+	        <ul class="nav-links" id="nav-links">
+	            <li><a href="index.html">首頁</a></li>
+	            <li><a href="Manicure.html">美甲服務</a></li>
+	            <li><a href="HydraFacial.html">韓式精緻美學</a></li>
+	            <li><a href="press_nails.html">穿戴甲</a></li>
+	            <li><a href="#">關於我們</a></li>
+	            <li><a href="#" class="nav-cta">立即預約</a></li>
+	        </ul>
+    	</div>
+	</nav>
+	
+	<div class="product-grid">
+		<div class="product-card" onclick="openModal('水銀流心', 'NT$ 300','裸粉色調\n 不規則鏡面銀流線條','img/穿戴甲/水銀流心.jpg')">
+	        <div class="image-container">
+	            <img src="img/穿戴甲/水銀流心.jpg" alt="item">
+	        </div>
+	        <div class="product-name">水銀流心</div>
+	        <div class="product-price">
+				NT$ 300
+				<span style="text-decoration: line-through; color: #888; margin-left: 10px;">原價 400</span>
+			</div>
+		</div>
+	
+	    <div class="product-card" onclick="openModal('幻彩美少女', 'NT$ 350','粉紫色調鏡面效果\n 隨光變幻的貓眼\n 愛心與星形幻彩圖案','img/穿戴甲/幻彩美少女.jpg')">
+	        <div class="image-container">
+	            <img src="img/穿戴甲/幻彩美少女.jpg" alt="item">
+	        </div>
+	        <div class="product-name">幻彩美少女</div>
+	        <div class="product-price">
+				NT$ 350
+				<span style="text-decoration: line-through; color: #888; margin-left: 10px;">原價 500</span>
+			</div>
+		</div>
+
+		<div class="product-card" onclick="openModal('冰島之晨', 'NT$ 350','幻彩極光偏光\n 隨光變幻的貓眼\n 愛心與星形幻彩圖案','img/穿戴甲/冰島之晨.jpg')">
+	        <div class="image-container">
+	            <img src="img/穿戴甲/冰島之晨.jpg" alt="item">
+	        </div>
+	        <div class="product-name">幻彩美少女</div>
+	        <div class="product-price">
+				NT$ 350
+				<span style="text-decoration: line-through; color: #888; margin-left: 10px;">原價 500</span>
+			</div>
+		</div>
+		
+		<div class="product-card" onclick="openModal('心動頻率', 'NT$ 380','愛心貓眼\n 低調奢華\n 乾燥玫瑰粉','img/穿戴甲/心動頻率.jpg')">
+	        <div class="image-container">
+	            <img src="img/穿戴甲/心動頻率.jpg" alt="item">
+	        </div>
+	        <div class="product-name">心動頻率</div>
+	        <div class="product-price">NT$ 380</div>
+		</div>
+		
+		<div class="product-card" onclick="openModal('馬卡龍果凍怪', 'NT$ 350','多層次馬卡龍配色\n 「微厭世」表情設計\n 3D 立體膠感','img/穿戴甲/馬卡龍果凍怪.jpg')">
+	        <div class="image-container">
+	            <img src="img/穿戴甲/馬卡龍果凍怪.jpg" alt="item">
+	        </div>
+	        <div class="product-name">馬卡龍果凍怪</div>
+	        <div class="product-price">NT$ 350</div>
+		</div>
+		
+		<div class="product-card" onclick="openModal('瑪格麗特', 'NT$ 400','極光貓眼底色\n 精緻鏡面手繪花卉\n 氣質法式拼接','img/穿戴甲/瑪格麗特.jpg')">
+	        <div class="image-container">
+	            <img src="img/穿戴甲/瑪格麗特.jpg" alt="item">
+	        </div>
+	        <div class="product-name">瑪格麗特</div>
+	        <div class="product-price">
+				NT$ 400
+			</div>
+		</div>
+		
+		<div class="product-card" onclick="openModal('焦糖瑪奇朵', 'NT$ 450','大理石x琥珀暈染\n 貓眼光影\n 奶茶色x暖棕色調','img/穿戴甲/焦糖瑪奇朵.jpg')">
+	        <div class="image-container">
+	            <img src="img/穿戴甲/焦糖瑪奇朵.jpg" alt="item">
+	        </div>
+	        <div class="product-name">焦糖瑪奇朵</div>
+	        <div class="product-price">
+				NT$ 450
+				<span style="text-decoration: line-through; color: #888; margin-left: 10px;">原價 600</span>
+			</div>
+		</div>
+		
+		<div class="product-card" onclick="openModal('星塵精靈風', 'NT$ 450','柔霧腮紅暈染底色\n 極簡銀色金屬線條\n 鏡面銀法式包邊','img/穿戴甲/星塵精靈風.jpg')">
+	        <div class="image-container">
+	            <img src="img/穿戴甲/星塵精靈風.jpg" alt="item">
+	        </div>
+	        <div class="product-name">星塵精靈風</div>
+	        <div class="product-price">NT$ 450</div>
+		</div>
+		
+		<div class="product-card" onclick="openModal('微醺腮紅小豬', 'NT$ 450','手繪萌系小豬\n 英倫風格紋：\n 滿版小愛心','img/穿戴甲/微醺腮紅小豬.jpg')">
+	        <div class="image-container">
+	            <img src="img/穿戴甲/微醺腮紅小豬.jpg" alt="item">
+	        </div>
+	        <div class="product-name">微醺腮紅小豬</div>
+	        <div class="product-price">NT$ 450</div>
+		</div>
+		
+		<div class="product-card" onclick="openModal('紅絲絨畫報', 'NT$ 450','絲絨酒紅\n 閃耀金箔與拉絲\n 銀河貓眼與亮片','img/穿戴甲/紅絲絨畫報.jpg')">
+	        <div class="image-container">
+	            <img src="img/穿戴甲/紅絲絨畫報.jpg" alt="item">
+	        </div>
+	        <div class="product-name">紅絲絨畫報</div>
+	        <div class="product-price">
+				NT$ 450
+				<span style="text-decoration: line-through; color: #888; margin-left: 10px;">原價 550</span>
+			</div>
+		</div>
+		
+		<div class="product-card" onclick="openModal('午茶小香織紋', 'NT$ 450','經典小香毛呢\n 晶透果凍裸色\n 精緻異材質點綴','img/穿戴甲/午茶小香織紋.jpg')">
+	        <div class="image-container">
+	            <img src="img/穿戴甲/午茶小香織紋.jpg" alt="item">
+	        </div>
+	        <div class="product-name">午茶小香織紋</div>
+	        <div class="product-price">
+				NT$ 450
+				<span style="text-decoration: line-through; color: #888; margin-left: 10px;">原價 550</span>
+			</div>
+		</div>
+		
+		<div class="product-card" onclick="openModal('碎銀冬曉', 'NT$ 600','萌系立體手繪雪人\n 水滴鑽飾\n 細緻雪花','img/穿戴甲/碎銀冬曉.jpg')">
+	        <div class="image-container">
+	            <img src="img/穿戴甲/碎銀冬曉.jpg" alt="item">
+	        </div>
+	        <div class="product-name">碎銀冬曉</div>
+	        <div class="product-price">NT$ 600</div>
+		</div>
+		
+		<div class="product-card" onclick="openModal('晨曦花露', 'NT$ 600','立體浮雕花卉\n 幻彩極光與碎鑽點綴\n 適合搭配蕾絲長裙、淺色系洋裝','img/穿戴甲/晨曦花露.jpg')">
+	        <div class="image-container">
+	            <img src="img/穿戴甲/晨曦花露.jpg" alt="item">
+	        </div>
+	        <div class="product-name">晨曦花露</div>
+	        <div class="product-price">NT$ 600</div>
+		</div>
+		
+		<div class="product-card sold-out" onclick="openModal('晴空海霧 (已售完)', 'NT$ 400','● 此款目前已售完\n● 歡迎私訊詢問是否可訂製','img/穿戴甲/晴空海霧.jpg')">
+	        <div class="image-container">
+	        	<div class="sold-out-label">SOLD OUT</div>
+	            <img src="img/穿戴甲/晴空海霧.jpg" alt="item">
+	        </div>
+	        <div class="product-name">晴空海霧</div>
+	        <div class="product-price">NT$ 550</div>
+		</div>
+	    
+	    <div class="product-card sold-out" onclick="openModal('HOSHI x WOOZI 應援款式 (已售完)', 'NT$ 600', '● 此款目前已售完\n● 歡迎私訊詢問是否可訂製', 'img/穿戴甲/HW_應援1.jpg')">
+		    <div class="image-container">
+		        <div class="sold-out-label">SOLD OUT</div>
+		        <img src="img/穿戴甲/HW_應援1.jpg" alt="item">
+		    </div>
+		    <div class="product-name">HW演唱會應援款式</div>
+		    <div class="product-price">NT$ 600</div>
+		</div>
+		
+		<div class="product-card sold-out" onclick="openModal('SVT-哲哲櫻桃海 (已售完)', 'NT$ 600', '● 此款目前已售完\n● 歡迎私訊詢問是否可訂製', 'img/穿戴甲/SVT-哲哲櫻桃海.jpg')">
+		    <div class="image-container">
+		        <div class="sold-out-label">SOLD OUT</div>
+		        <img src="img/穿戴甲/SVT-哲哲櫻桃海.jpg" alt="item">
+		    </div>
+		    <div class="product-name">SVT-哲哲櫻桃海</div>
+		    <div class="product-price">NT$ 600</div>
+		</div>
+		
+		<div class="product-card sold-out" onclick="openModal('SVT-哲理式溫柔 (已售完)', 'NT$ 600', '● 此款目前已售完\n● 歡迎私訊詢問是否可訂製', 'img/穿戴甲/SVT-哲理式溫柔.jpg')">
+		    <div class="image-container">
+		        <div class="sold-out-label">SOLD OUT</div>
+		        <img src="img/穿戴甲/SVT-哲理式溫柔.jpg" alt="item">
+		    </div>
+		    <div class="product-name">SVT-哲理式溫柔</div>
+		    <div class="product-price">NT$ 600</div>
+		</div>
+		
+		<div class="product-card sold-out" onclick="openModal('SVT-1004 號天使專屬 (已售完)', 'NT$ 600', '● 此款目前已售完\n● 歡迎私訊詢問是否可訂製', 'img/穿戴甲/SVT-1004 號天使專屬.jpg')">
+		    <div class="image-container">
+		        <div class="sold-out-label">SOLD OUT</div>
+		        <img src="img/穿戴甲/SVT-1004 號天使專屬.jpg" alt="item">
+		    </div>
+		    <div class="product-name">SVT-1004 號天使專屬</div>
+		    <div class="product-price">NT$ 600</div>
+		</div>
+		
+		<div class="product-card sold-out" onclick="openModal('SVT-紳士鹿的午後紅酒 (已售完)', 'NT$ 600', '● 此款目前已售完\n● 歡迎私訊詢問是否可訂製', 'img/穿戴甲/SVT-紳士鹿的午後紅酒.jpg')">
+		    <div class="image-container">
+		        <div class="sold-out-label">SOLD OUT</div>
+		        <img src="img/穿戴甲/SVT-紳士鹿的午後紅酒.jpg" alt="item">
+		    </div>
+		    <div class="product-name">SVT-紳士鹿的午後紅酒</div>
+		    <div class="product-price">NT$ 600</div>
+		</div>
+		
+		<div class="product-card sold-out" onclick="openModal('SVT-文俊尼的 1+1 魔法 (已售完)', 'NT$ 600', '● 此款目前已售完\n● 歡迎私訊詢問是否可訂製', 'img/穿戴甲/SVT-文俊尼的 1+1 魔法.jpg')">
+		    <div class="image-container">
+		        <div class="sold-out-label">SOLD OUT</div>
+		        <img src="img/穿戴甲/SVT-文俊尼的 1+1 魔法.jpg" alt="item">
+		    </div>
+		    <div class="product-name">SVT-文俊尼的 1+1 魔法</div>
+		    <div class="product-price">NT$ 600</div>
+		</div>
+		
+		<div class="product-card sold-out" onclick="openModal('SVT-Horangi Power! 閃亮能量', 'NT$ 600', '● 此款目前已售完\n● 歡迎私訊詢問是否可訂製', 'img/穿戴甲/SVT-Horangi Power! 閃亮能量.jpg')">
+		    <div class="image-container">
+		        <div class="sold-out-label">SOLD OUT</div>
+		        <img src="img/穿戴甲/SVT-Horangi Power! 閃亮能量.jpg" alt="item">
+		    </div>
+		    <div class="product-name">SVT-Horangi Power! 閃亮能量</div>
+		    <div class="product-price">NT$ 600</div>
+		</div>
+		
+		<div class="product-card sold-out" onclick="openModal('SVT-辛辣面的貓咪食堂', 'NT$ 600', '● 此款目前已售完\n● 歡迎私訊詢問是否可訂製', 'img/穿戴甲/SVT-辛辣面的貓咪食堂.jpg')">
+		    <div class="image-container">
+		        <div class="sold-out-label">SOLD OUT</div>
+		        <img src="img/穿戴甲/SVT-辛辣面的貓咪食堂.jpg" alt="item">
+		    </div>
+		    <div class="product-name">SVT-辛辣面的貓咪食堂</div>
+		    <div class="product-price">NT$ 600</div>
+		</div>
+		
+		<div class="product-card sold-out" onclick="openModal('SVT-知勳的米粒大冒險', 'NT$ 600', '● 此款目前已售完\n● 歡迎私訊詢問是否可訂製', 'img/穿戴甲/SVT-知勳的米粒大冒險.jpg')">
+		    <div class="image-container">
+		        <div class="sold-out-label">SOLD OUT</div>
+		        <img src="img/穿戴甲/SVT-知勳的米粒大冒險.jpg" alt="item">
+		    </div>
+		    <div class="product-name">SVT-知勳的米粒大冒險</div>
+		    <div class="product-price">NT$ 600</div>
+		</div>
+		
+		<div class="product-card sold-out" onclick="openModal('Woozi音樂祭', 'NT$ 600', '● 此款目前已售完\n● 歡迎私訊詢問是否可訂製', 'img/穿戴甲/Woozi音樂祭.jpg')">
+		    <div class="image-container">
+		        <div class="sold-out-label">SOLD OUT</div>
+		        <img src="img/穿戴甲/Woozi音樂祭.jpg" alt="item">
+		    </div>
+		    <div class="product-name">Woozi音樂祭</div>
+		    <div class="product-price">NT$ 600</div>
+		</div>
+		
+		<div class="product-card sold-out" onclick="openModal('SVT-冥想中的小青蛙', 'NT$ 600', '● 此款目前已售完\n● 歡迎私訊詢問是否可訂製', 'img/穿戴甲/SVT-冥想中的小青蛙.jpg')">
+		    <div class="image-container">
+		        <div class="sold-out-label">SOLD OUT</div>
+		        <img src="img/穿戴甲/SVT-冥想中的小青蛙.jpg" alt="item">
+		    </div>
+		    <div class="product-name">SVT-冥想中的小青蛙</div>
+		    <div class="product-price">NT$ 600</div>
+		</div>
+		
+		<div class="product-card sold-out" onclick="openModal('SVT-馬爾濟斯的午後陽光', 'NT$ 600', '● 此款目前已售完\n● 歡迎私訊詢問是否可訂製', 'img/穿戴甲/SVT-馬爾濟斯的午後陽光.jpg')">
+		    <div class="image-container">
+		        <div class="sold-out-label">SOLD OUT</div>
+		        <img src="img/穿戴甲/SVT-馬爾濟斯的午後陽光.jpg" alt="item">
+		    </div>
+		    <div class="product-name">SVT-馬爾濟斯的午後陽光</div>
+		    <div class="product-price">NT$ 600</div>
+		</div>
+		
+		<div class="product-card sold-out" onclick="openModal('SVT-披薩店的小狗', 'NT$ 600', '● 此款目前已售完\n● 歡迎私訊詢問是否可訂製', 'img/穿戴甲/SVT-披薩店的小狗.jpg')">
+		    <div class="image-container">
+		        <div class="sold-out-label">SOLD OUT</div>
+		        <img src="img/穿戴甲/SVT-披薩店的小狗.jpg" alt="item">
+		    </div>
+		    <div class="product-name">SVT-披薩店的小狗</div>
+		    <div class="product-price">NT$ 600</div>
+		</div>
+		
+		<div class="product-card sold-out" onclick="openModal('SVT-濟州島的小橘子', 'NT$ 600', '● 此款目前已售完\n● 歡迎私訊詢問是否可訂製', 'img/穿戴甲/SVT-濟州島的小橘子.jpg')">
+		    <div class="image-container">
+		        <div class="sold-out-label">SOLD OUT</div>
+		        <img src="img/穿戴甲/SVT-濟州島的小橘子.jpg" alt="item">
+		    </div>
+		    <div class="product-name">SVT-濟州島的小橘子</div>
+		    <div class="product-price">NT$ 600</div>
+		</div>
+		
+		<div class="product-card sold-out" onclick="openModal('SVT-外星小熊的地球旅行', 'NT$ 600', '● 此款目前已售完\n● 歡迎私訊詢問是否可訂製', 'img/穿戴甲/SVT-外星小熊的地球旅行.jpg')">
+		    <div class="image-container">
+		        <div class="sold-out-label">SOLD OUT</div>
+		        <img src="img/穿戴甲/SVT-外星小熊的地球旅行.jpg" alt="item">
+		    </div>
+		    <div class="product-name">SVT-外星小熊的地球旅行</div>
+		    <div class="product-price">NT$ 600</div>
+		</div>
+		
+		<div class="product-card sold-out" onclick="openModal('SVT-小恐龍的歷史紀', 'NT$ 600', '● 此款目前已售完\n● 歡迎私訊詢問是否可訂製', 'img/穿戴甲/SVT-小恐龍的歷史紀.jpg')">
+		    <div class="image-container">
+		        <div class="sold-out-label">SOLD OUT</div>
+		        <img src="img/穿戴甲/SVT-小恐龍的歷史紀錄.jpg" alt="item">
+		    </div>
+		    <div class="product-name">SVT-小恐龍的歷史紀</div>
+		    <div class="product-price">NT$ 600</div>
+		</div>
+		
+		<div class="product-card sold-out" onclick="openModal('BSS 製作人隨行組', 'NT$ 700', '● 此款目前已售完\n● 歡迎私訊詢問是否可訂製', 'img/穿戴甲/BSS 製作人隨行組.jpg')">
+		    <div class="image-container">
+		        <div class="sold-out-label">SOLD OUT</div>
+		        <img src="img/穿戴甲/BSS 製作人隨行組.jpg" alt="item">
+		    </div>
+		    <div class="product-name">BSS 製作人隨行組</div>
+		    <div class="product-price">NT$ 700</div>
+		</div>
+		
+		<div class="product-card sold-out" onclick="openModal('輝常閃耀', 'NT$ 800', '● 此款目前已售完\n● 歡迎私訊詢問是否可訂製', 'img/穿戴甲/輝常閃耀.jpg')">
+		    <div class="image-container">
+		        <div class="sold-out-label">SOLD OUT</div>
+		        <img src="img/穿戴甲/輝常閃耀.jpg" alt="item">
+		    </div>
+		    <div class="product-name">輝常閃耀</div>
+		    <div class="product-price">NT$ 800</div>
+		</div>
+	
+	    
+	</div>
+	<div class="modal-overlay" id="modalOverlay" onclick="closeModal()">
+	    <div class="modal-content" onclick="event.stopPropagation()">
+	        <span class="close-btn" onclick="closeModal()">&times;</span>
+	        
+	        <img id="modalImg" class="modal-image" src="" alt="Detail">
+	        
+	        <div class="modal-info">
+	            <h2 id="modalTitle">商品名稱</h2>
+	            <p id="modalPrice" style="color: #8c7e74; font-weight: bold;"></p>
+	            <p id="modalDesc">這裡顯示詳細的描述文字...</p>
+	            
+	            <p style="font-size: 12px; color: #a5938d;">* 穿戴甲請務必確認尺寸再下單</p>
+	            
+	            <button class="buy-btn" onclick="goToOrderPage()">立即下單</button>
+	        </div>
+	    </div>
+	</div>
+
+</body>
+</html>
