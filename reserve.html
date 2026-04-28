@@ -14,7 +14,28 @@
 	<script src="JS/reverse.js"></script>
 </head>	
 <body>
-
+	<!-- 選單位置 -->
+ 	<nav class="navbar">
+	    <div class="nav-container">
+	        <a href="index.html" class="logo">嚕 咪 美 學</a>
+			
+			<!-- 手機/小螢幕版的"漢堡選單按鈕" -->
+	        <button class="menu-toggle" id="mobile-menu">
+	            <span class="bar"></span>	<!-- 漢堡的一條線 -->
+	            <span class="bar"></span>
+	            <span class="bar"></span>
+	        </button>
+	        
+	        <ul class="nav-links" id="nav-links">
+	            <li><a href="index.html">首頁</a></li>
+	            <li><a href="Manicure.html">美甲服務</a></li>
+	            <li><a href="HydraFacial.html">韓式精緻美學</a></li>
+	            <li><a href="press_nails.html">穿戴甲</a></li>
+	            <li><a href="#">關於我們</a></li>
+	            <li><a href="reserve.html" class="nav-cta">立即預約</a></li>
+	        </ul>
+    	</div>
+	</nav>
     <div class="container">
         <header>
             <h1>線上預約服務</h1>
@@ -182,8 +203,11 @@
 			</div>
 
             <section class="form-group">
-                <label>您的姓名</label>
+                <label>您的稱呼</label>
                 <input type="text" id="custName" placeholder="請輸入姓名" required>
+                
+                <label>Line名稱(預約請先加 <a href="https://lin.ee/TAU26bs">官方Line</a> )</label>
+                <input type="text" id="custLineName" placeholder="請輸入賴名稱" required>
 
                 <label>您的電話</label>
                 <input type="number" id="custPhone" placeholder="請輸入電話號碼" required>
@@ -193,11 +217,11 @@
 			    <label>預約注意事項</label>
 			    <div class="notice-box">
 			        <ul>
-			            <li>✨ <strong>預約保留：</strong> 預約僅保留 10 分鐘，逾時將自動取消並開放現場候補。</li>
+			            <li>✨ <strong>預約保留：</strong> 預約僅保留 5 分鐘，逾時將自動取消並開放現場候補。</li>
 			            <li>✨ <strong>變更取消：</strong> 若需取消或更改時段，請於預約日前 24 小時私訊 LINE 告知。</li>
-			            <li>✨ <strong>施作時間：</strong> 基礎美甲約需 1.5-2 小時，請預留足夠時間以免行程倉促。</li>
+			            <li>✨ <strong>施作時間：</strong> 美甲服務需 2.5 小時左右，精緻臉臉需 1.5 小時左右，請預留足夠時間以免行程倉促。</li>
 			            <li>✨ <strong>健康狀況：</strong> 若指甲有霉菌、受傷或嚴重發炎，請先行就醫，本店暫不提供施作。</li>
-			            <li>✨ <strong>攜伴規定：</strong> 為維護服務品質與場域空間，恕不接受攜伴與寵物，敬請見諒。</li>
+			            <li>✨ <strong>攜伴規定：</strong> 為維護服務品質與場域空間，恕不接受2人以上攜伴，敬請見諒。</li>
 			        </ul>
 			    </div>
 			    <div class="agree-check">
@@ -209,92 +233,5 @@
             <button type="submit" class="submit-btn">送出預約</button>
         </form>
     </div>
-    
-    <script>
-	    document.getElementById('bookingForm').addEventListener('submit', async function(e) {
-	        e.preventDefault(); 
-	
-	        // --- 1. 抓取客戶基本資訊 ---
-	        const name = document.getElementById('custName').value;
-	        const phone = document.getElementById('custPhone').value;
-	        const date = document.getElementById('appointmentDate').value;
-	        const time = document.getElementById('selectedTime').value;
-	
-	        // --- 2. 抓取並判斷預約項目 ---
-	        let selectedServices = [];
-	        
-	        // 檢查美甲
-	        if(document.getElementById('mainNail').checked) {
-	            const nailDetail = document.getElementById('nailPart').value;
-	            // 這裡可以更精細一點，轉換成中文顯示
-	            const partText = nailDetail === 'hand' ? '手部' : (nailDetail === 'foot' ? '腳部' : '手腳同時');
-	            selectedServices.push(`美甲(${partText})`);
-	        }
-	        // 檢查臉部 (多選)
-	        const facials = document.querySelectorAll('input[name="facial"]:checked');
-	        facials.forEach(item => {
-	            selectedServices.push(item.getAttribute('data-name'));
-	        });
-	        // 檢查其他
-	        if(document.getElementById('mainOther').checked) {
-	            const otherSelect = document.getElementById('otherType');
-	            const otherName = otherSelect.options[otherSelect.selectedIndex].text;
-	            selectedServices.push(otherName !== "請選擇項目..." ? otherName : "其他加購");
-	        }
-	
-	        // ⭐【關鍵新增：阻擋邏輯】⭐
-	        // 如果選取的項目陣列長度為 0，代表一個都沒勾
-	        if (selectedServices.length === 0) {
-	            alert("請至少選擇一項預約服務（美甲、精緻臉臉或加購項目）喔！");
-	            // 滾動到最上方讓用戶看到服務選擇區
-	            window.scrollTo({ top: 0, behavior: 'smooth' });
-	            return; // 直接中斷，不執行後面的 fetch
-	        }
-	
-	        // --- 3. 檢查必填欄位 ---
-	        if(!name || !phone || !date || !time) {
-	            alert("請填寫姓名、電話並選擇預約日期與時間喔！");
-	            return;
-	        }
-	
-	        const serviceString = selectedServices.join(', ');
-	
-	        // --- 4. 打包資料 ---
-	        const bookingData = {
-	            name: name,
-	            phone: phone,
-	            service: serviceString,
-	            time: `${date} ${time}`
-	        };
-	
-	        // --- 5. 寄送到 Google ---
-	        const googleAppScriptUrl = 'https://script.google.com/macros/s/AKfycbzS82MQoA1WbEk98cmzi13cip0Zb-6AedakWslWtAckh-DhQN8x3otAHB-m_yJf8U9L/exec';
-	
-	     	// 修改原本的 fetch 段落
-	        try {
-	            const btn = document.querySelector('.submit-btn');
-	            btn.innerText = "傳送中...";
-	            btn.disabled = true;
-
-	            // 將資料轉為 URLSearchParams 或直接傳 JSON
-	            // 這裡建議配合 GAS 的 doPost(e) 處理 JSON
-	            const response = await fetch(googleAppScriptUrl, {
-	                method: 'POST',
-	                body: JSON.stringify(bookingData) // 直接傳送 JSON 字串
-	            });
-
-	            // 注意：若 GAS 使用 no-cors，這裡會抓不到 response.ok
-	            alert('預約已送出！請稍後確認 TimeTree 是否同步成功。');
-	            
-	        } catch (error) {
-	            console.error('發生錯誤:', error);
-	            alert('送出失敗，請聯繫我們。');
-	        } finally {
-	            const btn = document.querySelector('.submit-btn');
-	            btn.innerText = "送出預約";
-	            btn.disabled = false;
-	        }
-	    });
-	</script>
 </body>
 </html>
