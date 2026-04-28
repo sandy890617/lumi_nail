@@ -1,0 +1,431 @@
+@charset "UTF-8";
+
+/* --- 1. 引入字體 --- */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&family=Noto+Sans+TC:wght@300;400;500&family=Playfair+Display:wght@700&display=swap');
+
+.aqua-peel-section {
+            font-family: "PingFang TC", "Microsoft JhengHei", sans-serif;
+            background-color: var(--brand-beige);
+            padding: 60px 20px;
+            color: var(--brand-brown);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-size: 28px;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+        }
+
+        .section-header p {
+            font-size: 16px;
+            color: var(--text-gray);
+        }
+
+        /* 三大優勢區塊 */
+        .features-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 25px 20px;
+            text-align: center;
+            border-radius: 5px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .feature-card i {
+            font-size: 40px;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .feature-card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .feature-card p {
+            font-size: 14px;
+            line-height: 1.8;
+            color: var(--text-gray);
+        }
+
+        /* 震撼對比區塊 */
+        .comparison-box {
+            background: var(--white);
+            border-radius: 10px;
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .comparison-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .comparison-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+
+        .comparison-image img {
+            max-width: 100%;
+            border-radius: 5px;
+            border: 1px solid #eee;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--brand-brown);
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            letter-spacing: 2px;
+            margin-top: 20px;
+            border-radius: 2px;
+            transition: opacity 0.3s;
+        }
+
+        .cta-button:hover {
+            opacity: 0.8;
+        }
+        
+
+/* 最外層：底色與背景間距 */
+.aqua-main-section {
+    background-color: #ffffff; /* 或是你的底色 */
+    padding: 60px 100px;
+    border-radius: 15px;       /* 圖片中的圓角白底 */
+    max-width: 1000px;
+    margin: 40px auto;         /* 讓整個區塊水平置中 */
+}
+
+.aqua-text-box h3 {
+    font-size: 24px;         /* 稍微放大字級 */
+    font-weight: 700;        /* 加粗 */
+    color: #333;             /* 深灰色比純黑更有質感 */
+    line-height: 1.4;
+    margin-bottom: 20px;
+    padding-left: 15px;      /* 為左側裝飾留空間 */
+    border-left: 5px solid #a8dadc; /* 使用粉藍或品牌色，對應水飛梭的主題 */
+    display: block;
+}
+
+/* 彈性佈局：控制左右並排 */
+.aqua-content-flex {
+    display: flex;
+    align-items: center;       /* 垂直置中 */
+    justify-content: space-between;
+    gap: 40px;                 /* 左右間距 */
+}
+
+/* 左側文字設定 */
+.aqua-text-box {
+    flex: 1.2;                 /* 文字佔比稍微多一點 */
+    text-align: left;
+}
+
+/* 右側影片容器：關鍵在於讓內部垂直排列 */
+.aqua-video-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;    /* 讓影片和下方提示字成一列 */
+    align-items: center;       /* 讓影片和提示字在右側區域內置中 */
+}
+
+/* 影片裁切相框 */
+.video-crop-frame {
+    width: 100%;
+    max-width: 380px;          /* 限制影片寬度 */
+    height: 300px;             /* 【裁切核心】調整此高度切掉紅框 */
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* 影片本人：填滿裁切框 */
+.aqua-video-style {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;         /* 自動拉伸並裁切 */
+    display: block;
+}
+
+/* 下方紅色的提示字（改為 Class） */
+.video-caption {
+    font-size: 12px;
+    color: #999;
+    margin-top: 15px;          /* 與影片拉開距離 */
+    text-align: center;
+    width: 100%;
+}
+
+
+/* 新客專屬優惠 */ 
+/* 容器主體 */
+/* 外層容器：讓卡片左右排列 */
+.offer-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: stretch; /* 讓三張卡片高度整齊一致 */
+    gap: 20px;            /* 適度縮小間距，確保排得下 */
+    max-width: 1200px;    /* 設定最大寬度限制 */
+    margin: 0 auto;       /* 居中對齊 */
+    padding: 40px 20px;
+}
+
+/* 基礎卡片樣式 */
+.new-guest-offer {
+    background: #ffffff;
+    flex: 1;
+    max-width: 420px; /* 稍微縮小一點以便併排 */
+    min-width: 320px;
+    padding: 50px 30px 40px;
+    border-radius: 30px;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(140, 118, 98, 0.12);
+    position: relative;
+    border: 1px solid #f2eee9;
+    font-family: "PingFang TC", "Microsoft JhengHei", sans-serif;
+    transition: transform 0.3s ease;
+}
+
+.new-guest-offer:hover {
+    transform: translateY(-5px); /* 滑鼠滑過輕微浮起 */
+}
+
+/* 頂部裝飾條 (變數控制顏色) */
+.new-guest-offer::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 6px;
+    border-radius: 30px 30px 0 0;
+}
+
+/* --- 主題顏色控制 --- */
+/* 金色主題 (水飛梭) */
+.new-guest-offer.gold::before { background: linear-gradient(90deg, #d4c1a5, #8c7662, #d4c1a5); }
+.new-guest-offer.gold .discount-amount { color: #ff0000; }
+.new-guest-offer.gold .gift-name span { color: #b08d57; }
+
+/* 粉色主題 (美背) */
+.new-guest-offer.pink::before { background: linear-gradient(90deg, #f8d7da, #e8aeb3, #f8d7da); }
+.new-guest-offer.pink .discount-amount { color: #ff0000; }
+.new-guest-offer.pink .gift-name span { color: #d4a5a9; }
+
+/* 紫色主題 (小臉4D拉提) */
+.new-guest-offer.purple::before { background: linear-gradient(90deg, #E1D5F5, #B39DDB, #E1D5F5); }
+.new-guest-offer.purple .discount-amount { color: #ff0000; }
+.new-guest-offer.purple .gift-name span { color: #9575CD;}
+
+
+/* 內部文字樣式 */
+.offer-badge {
+    color: #8c7662;
+    font-size: 11px;
+    letter-spacing: 3px;
+    font-weight: 700;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.offer-title {
+    color: #333;
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 30px;
+    letter-spacing: 1.5px;
+    height: 2.4em; /* 確保標題長度不同時卡片依然整齊 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 價格區塊 */
+.offer-price {
+    background: #fcfaf8;
+    padding: 25px 20px;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    border: 1px solid rgba(176, 141, 87, 0.05);
+}
+
+.original-line {
+    display: block;
+    color: #b2b2b2;
+    font-size: 14px;
+    margin-bottom: 6px;
+}
+
+.strikethrough { text-decoration: line-through; }
+
+.main-price {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    color: #4a3e35;
+}
+
+.price-label { font-size: 16px; margin-right: 6px; }
+.currency { font-size: 20px; font-weight: 600; }
+.discount-amount {
+    font-size: 56px;
+    font-weight: 700;
+    line-height: 1;
+    font-family: 'Consolas', serif;
+}
+
+/* 贈品區塊 */
+.gift-container { padding-top: 10px; }
+.gift-header { font-size: 14px; color: #666; font-weight: 600; margin-bottom: 20px; }
+.gift-grid { display: flex; justify-content: space-around; gap: 10px; }
+.gift-item { flex: 1; }
+.gift-icon { font-size: 22px; margin-bottom: 8px; display: block; }
+.gift-name { font-size: 12px; color: #333; font-weight: 600; line-height: 1.5; }
+.gift-name span { display: block; font-size: 11px; font-weight: 400; margin-top: 3px; }
+
+
+
+/* 平板與手機 (900px 以下切換為漢堡選單) */
+@media (max-width: 900px) {
+    .menu-toggle {
+        display: flex;
+        margin-left: auto; /* 強制靠右 */
+    }
+
+    .nav-links {
+        position: fixed;
+        right: -100%; /* 隱藏於右側 */
+        top: 0;
+        width: 260px; /* 側邊長條寬度 */
+        height: 100vh;
+        background-color: rgba(255, 251, 240, 0.98);
+        flex-direction: column;
+        justify-content: center;
+        transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        z-index: 1050;
+        box-shadow: -10px 0 30px rgba(0,0,0,0.05);
+    }
+
+    .nav-links.active {
+        right: 0; /* 滑入 */
+    }
+
+    .nav-links li {
+        margin: 20px 0;
+        margin-left: 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-links a::after {
+        display: none; /* 手機版不使用下劃線動畫 */
+    }
+}
+
+/* 漢堡按鈕轉 X 動畫 */
+.menu-toggle.is-active .bar:nth-child(1) {
+    transform: translateY(7.5px) rotate(45deg);
+}
+.menu-toggle.is-active .bar:nth-child(2) {
+    opacity: 0;
+}
+.menu-toggle.is-active .bar:nth-child(3) {
+    transform: translateY(-7.5px) rotate(-45deg);
+}
+
+@media (max-width: 768px) {
+    .hero-carousel {
+        height: 40vh; /* 手機版縮小一點高度 */
+    }
+    
+    
+    /* 工作照 */
+    .about-container {
+        flex-direction: column; /* 手機版改為上下排列 */
+        text-align: center;
+    }
+    
+    /* 本月優惠 */
+    .promo-glass-card { padding: 40px 25px; }
+    .promo-content-row { flex-direction: column; text-align: center; }
+    .promo-features li { font-size: 15px; }
+    .price-value { font-size: 56px; }
+    
+    
+     /* 圖片縮圖 */ 
+    .modal-body {
+        flex-direction: column;
+    }
+    .thumbnail-list {
+        flex-direction: row; /* 手機版縮圖改橫排 */
+        height: auto;
+    }
+    .thumb-item {
+        width: 80px;
+    }
+    
+    .aqua-content-flex {
+        flex-direction: column;
+        text-align: center;
+    }
+    .aqua-text-box {
+        text-align: center;
+    }
+}
+
+
+/* 手機版細節 (600px 以下) */
+@media (max-width: 600px) {
+	
+    .logo {
+        font-size: 22px; /* 手機端稍微縮小字體防止擁擠 */
+    }
+    
+    .page-title {
+        font-size: 28px !important;
+        margin-top: 40px;
+    }
+
+    .service-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        padding: 20px 15px;
+    }
+
+    .service {
+        width: 100% !important;
+        padding: 20px 10px;
+        border-radius: 15px;
+    }
+
+    .service h3 { font-size: 16px; }
+
+    .carousel img {
+        width: 100% !important;
+        aspect-ratio: 1 / 1;
+    }
+}
