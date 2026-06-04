@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbxOWkXCDQFjubt83mbdqF8LdIXWBXsWbXaoGybY6GUPqW0aXFImCty4WNZS3N2zebRy/exec';
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwOhx7Fz9r_Afep6bDx_3wxf8YzrSS32as0o5bbOD5OQq3Jpr7CL5yZDqXO9mp2irxt/exec';
     
     let sheetData = []; 
     let fp; 
