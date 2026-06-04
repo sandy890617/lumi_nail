@@ -1,13 +1,17 @@
 @charset "UTF-8";
 
-/* --- 1. 服務價目表區 (Price Section) --- */
+/* ==========================================================================
+   1. 服務價目表區 (Price Section)
+   ========================================================================== */
 .price-container {
-    max-width: 800px;
-    margin: 60px auto;
-    padding: 50px 40px;
+    width: 92%;
+    max-width: 850px;
+    margin: 40px auto;
+    padding: 50px 40px; 
     background-color: #ffffff;
     border-radius: 20px;
-    box-shadow: 0 10px 40px rgba(166, 141, 133, 0.1); 
+    box-shadow: 0 10px 40px rgba(166, 141, 133, 0.1);
+    box-sizing: border-box;
 }
 
 .section-title {
@@ -16,14 +20,17 @@
     margin-bottom: 40px;
     font-size: 28px;
     letter-spacing: 4px;
+    font-family: 'Noto Serif TC', serif;
 }
 
+/* 價目表標籤列：電腦版預設置中 */
 .price-tabs {
     display: flex;
-    justify-content: center;
+    justify-content: center; 
     gap: 12px;
-    margin-bottom: 50px;
-    flex-wrap: wrap;
+    margin-bottom: 40px;
+    box-sizing: border-box;
+    flex-wrap: wrap; 
 }
 
 .tab-btn {
@@ -51,19 +58,27 @@
 }
 
 .tab-content {
-    display: none; /* 預設隱藏 */
+    display: none; /* 預設通通隱藏 */
 }
 
+/* 只有帶有 active 的區塊才會顯示，完全尊重 JS 控制 */
 .tab-content.active {
     display: block !important;
 }
 
+/* 價目細項彈性布局 */
 .price-item {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     margin-bottom: 25px;
     font-size: 16px;
     color: #5D5451;
+}
+
+.service-name {
+    flex-shrink: 0;
+    max-width: 60%;
 }
 
 .price-dots {
@@ -73,7 +88,7 @@
     background-size: 6px 1px;
     background-repeat: repeat-x;
     background-position: bottom;
-    margin: 0 20px;
+    margin: 0 15px;
     opacity: 0.6;
 }
 
@@ -82,55 +97,85 @@
     font-weight: 600;
     font-size: 18px;
     font-family: 'Optima', 'Palatino', serif;
+    flex-shrink: 0;
+    white-space: nowrap;
 }
 
 .price-notice {
     text-align: center;
     color: #A68D85;
     font-size: 14px;
-    margin: -15px 0 40px 0;
-    padding: 10px;
+    margin: -15px 0 35px 0;
+    padding: 12px;
     background-color: #FBF9F7;
     border-radius: 8px;
     width: 100%;
+    line-height: 1.5;
+    box-sizing: border-box;
 }
 
 .price-notice-sub {
-    font-size: 12px;
+    font-size: 12.5px;
     color: #B2A6A1;
-    margin-top: -20px;
-    margin-bottom: 20px;
-    font-style: italic;
+    margin-top: -18px;
+    margin-bottom: 25px;
+    padding-left: 2px;
+    line-height: 1.4;
 }
 
-/* --- 2. 作品集展示區 (Gallery Section) --- */
+/* 咬甲矯正頂部提示盒 */
+.rules-box {
+    border: 1px solid #d3bba7; 
+    padding: 16px; 
+    margin-bottom: 25px; 
+    border-radius: 10px;
+    background-color: #FFFBF9;
+    box-sizing: border-box;
+}
+.rules-box p {
+    font-size: 14px !important; 
+    color: #8c6a5a !important; 
+    margin: 0; 
+    line-height: 1.7 !important;
+}
+
+/* ==========================================================================
+   2. 作品集展示區 (Gallery Section)
+   ========================================================================== */
 .color-gallery-container {
+    width: 95%;
     max-width: 1200px;
-    margin: 40px auto;
-    padding: 15px;
+    margin: 50px auto;
+    padding: 0 10px;
+    box-sizing: border-box;
 }
 
 .gallery-main-title {
     text-align: center;
     color: #8E7366;
-    margin-bottom: 25px;
+    margin-bottom: 30px;
+    font-family: 'Noto Serif TC', serif;
+    font-size: 26px;
 }
 
+/* 作品集分類標籤列：電腦版維持置中 */
 .gallery-tabs {
     display: flex;
-    justify-content: center;
+    justify-content: center; 
     gap: 12px;
-    margin-bottom: 30px;
+    margin-bottom: 35px;
+    box-sizing: border-box;
     flex-wrap: wrap;
 }
 
 .gallery-tab-btn {
-    padding: 10px 25px;
+    padding: 10px 22px;
     border: 1px solid #EADED7;
     background: #fff;
     color: #5D5451;
     cursor: pointer;
-    border-radius: 4px;
+    border-radius: 50px; 
+    font-size: 14px;
     transition: all 0.3s;
 }
 
@@ -138,79 +183,124 @@
     background: #8E7366;
     color: #fff;
     border-color: #8E7366;
+    box-shadow: 0 4px 12px rgba(142, 115, 102, 0.15);
 }
 
+/* 分類區塊預設樣式：除了有 .active 之外，其餘通通嚴格隱藏 */
 .gallery-content {
     display: none;
-    animation: fadeIn 0.5s ease;
+    animation: fadeIn 0.4s ease;
 }
 
+/* 只有被選中（帶有 active）的風格才會露出來，其餘絕對保持隱藏 */
 .gallery-content.active {
-    display: block;
+    display: block !important;
 }
 
 .grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr); 
-    gap: 15px;
+    gap: 20px;
+    margin-bottom: 20px;
 }
 
 .color-item {
     background: #fff;
-    padding: 8px;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    padding: 10px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(142, 115, 102, 0.04);
     text-align: center;
     cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.color-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(142, 115, 102, 0.1);
 }
 
 .color-item img {
     width: 100%;
-    height: 180px;
+    aspect-ratio: 1 / 1; 
     object-fit: cover;
-    border-radius: 5px;
+    border-radius: 8px;
 }
 
 .color-item p {
-    margin-top: 8px;
-    font-size: 13px;
+    margin: 10px 0 5px 0;
+    font-size: 13.5px;
     color: #5D5451;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    font-weight: 500;
 }
 
-/* --- 3. 詳情卡片與標籤 --- */
+.item-price-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+    color: #8E7366;
+    font-weight: 600;
+    font-size: 14px;
+    margin-top: auto;
+    padding-top: 4px;
+}
+.price-symbol { font-size: 11px; }
+
+/* ==========================================================================
+   3. 詳情背板卡片與知識庫 RWD 排版
+   ========================================================================== */
 .style-detail-card {
     background: #fff;
     border: 1px solid #eaded7;
-    border-radius: 12px;
-    padding: 25px;
+    border-radius: 20px;
+    padding: 35px 30px;
     margin-bottom: 30px;
-    box-shadow: 0 4px 15px rgba(142, 115, 102, 0.05);
-    text-align: center;
+    box-shadow: 0 6px 20px rgba(142, 115, 102, 0.03);
+    box-sizing: border-box;
 }
 
 .detail-header {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     border-bottom: 1px dashed #eaded7;
-    padding-bottom: 10px;
+    padding-bottom: 15px;
+    text-align: center;
 }
 
 .detail-title {
     color: #8E7366;
-    font-size: 1.4rem;
-    margin: 10px 0;
+    font-size: 1.5rem;
+    margin: 12px 0 6px 0;
+    font-family: 'Noto Serif TC', serif;
 }
 
 .detail-price-tag {
     display: inline-block;
     background: #8E7366;
     color: #fff;
-    padding: 4px 15px;
+    padding: 5px 18px;
     border-radius: 50px;
     font-size: 14px;
-    font-weight: bold;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.target-audience {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.audience-label {
+    color: #8E7366;
+    font-weight: 600;
+    font-size: 14.5px;
+    margin-bottom: 10px;
 }
 
 .tag-group {
@@ -218,7 +308,7 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 8px;
-    max-width: 600px;
+    max-width: 700px;
     margin: 0 auto;
 }
 
@@ -226,121 +316,275 @@
     background-color: #fdfaf8;
     color: #5D5451;
     padding: 6px 14px;
-    border-radius: 6px;
+    border-radius: 8px;
     font-size: 13px;
     border: 1px solid #f2ede8;
 }
 
-/* --- 4. 彈窗區 (Modal) --- */
+.knowledge-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+    gap: 20px !important;
+    margin: 25px 0 !important;
+    text-align: left;
+}
+
+.info-item {
+    background: #fdfaf8 !important;
+    padding: 20px !important;
+    border-radius: 12px !important;
+    border: 1px solid rgba(191,163,143,0.18) !important;
+}
+
+.info-item h4 {
+    color: #8c6a5a !important;
+    font-size: 15px !important;
+    margin-top: 0 !important;
+    margin-bottom: 10px !important;
+}
+
+.info-item p {
+    font-size: 13.5px !important;
+    color: #666 !important;
+    margin: 0 !important;
+    line-height: 1.6 !important;
+}
+
+.view-more-container {
+    text-align: center;
+    margin-top: 30px;
+}
+
+/* ==========================================================================
+   4. 圖片放大彈窗區 (Modal)
+   ========================================================================== */
 .modal {
     display: none;
     position: fixed;
     top: 0; left: 0;
     width: 100%; height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.75);
     backdrop-filter: blur(8px);
-    z-index: 9999;
+    z-index: 10000; 
     justify-content: center;
     align-items: center;
+    padding: 15px;
 }
 
 .modal-content {
     background: #fff;
-    padding: 25px;
-    border-radius: 16px;
+    padding: 30px;
+    border-radius: 20px;
     position: relative;
-    width: 90%;
-    max-width: 1000px;
+    width: 100%;
+    max-width: 950px;
     max-height: 90vh;
     overflow-y: auto;
 }
 
 .modal-body {
     display: flex;
-    gap: 30px;
+    gap: 25px;
     align-items: flex-start;
 }
 
-.main-image-area { flex: 2; }
+.main-image-area { 
+    flex: 2; 
+    width: 100%;
+}
+
 .main-image-area img {
     width: 100%;
-    max-height: 70vh;
+    max-height: 60vh;
     object-fit: contain;
-    border-radius: 8px;
+    border-radius: 10px;
+    background-color: #fafafa;
 }
 
 .thumbnail-list {
-    flex: 0 0 120px;
+    flex: 0 0 110px;
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    max-height: 65vh;
+    gap: 10px;
+    max-height: 60vh;
     overflow-y: auto;
-    scrollbar-width: none; /* 隱藏捲軸 Firefox */
+    padding-right: 2px;
 }
 
-.thumbnail-list::-webkit-scrollbar { display: none; } /* 隱藏捲軸 Chrome */
+.thumbnail-list::-webkit-scrollbar { width: 4px; }
+.thumbnail-list::-webkit-scrollbar-thumb { background: #EADED7; border-radius: 10px; }
 
 .thumb-item {
     width: 100%;
     aspect-ratio: 1/1;
     object-fit: cover;
-    border-radius: 6px;
+    border-radius: 8px;
     cursor: pointer;
-    border: 3px solid transparent;
-    opacity: 0.6;
+    border: 2px solid transparent;
+    opacity: 0.5;
+    transition: all 0.2s;
 }
 
 .thumb-item.active {
-    border-color: #d8b6a4;
+    border-color: #8E7366;
     opacity: 1;
+    transform: scale(1.02);
 }
 
 .close-btn {
     position: absolute;
-    top: 15px; right: 20px;
-    font-size: 35px;
+    top: 10px; right: 20px;
+    font-size: 38px;
     cursor: pointer;
     color: #8E7366;
+    z-index: 10;
+    transition: color 0.2s;
 }
+.close-btn:hover { color: #5D5451; }
 
-/* --- 5. 按鈕與動畫 --- */
+.modal-footer {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #f2ede8;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #5D5451;
+    font-size: 14.5px;
+}
+#modalText { margin: 0; font-weight: 500; }
+#imageCounter { color: #B2988A; font-size: 13px; }
+
 .view-more-btn {
     display: inline-block;
-    padding: 10px 28px;
+    padding: 12px 32px;
     background-color: #8E7366;
     color: #fff !important;
     text-decoration: none;
     border-radius: 50px;
-    transition: 0.3s;
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.3s;
+    border: 1px solid #8E7366;
 }
 
 .view-more-btn:hover {
+    background-color: transparent;
+    color: #8E7366 !important;
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(142, 115, 102, 0.2);
+    box-shadow: 0 4px 12px rgba(142, 115, 102, 0.15);
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; } to { opacity: 1; }
-}
-
-/* --- 6. 響應式設定 (Responsive) --- */
 @media (max-width: 1024px) {
-    .grid { grid-template-columns: repeat(3, 1fr); }
+    .grid { 
+        grid-template-columns: repeat(3, 1fr); 
+        gap: 15px;
+    }
 }
 
-@media (max-width: 768px) {
-    .modal-body { flex-direction: column; }
+/* ==========================================================================
+   6. 💥 響應式中斷點設定 (755px 以下完美換行，且完全尊重 JS 顯示隱藏狀態) 💥
+   ========================================================================== */
+@media (max-width: 755px) {
+    .price-container { 
+        padding: 35px 20px; 
+        margin: 20px auto;
+    }
+    
+    /* 價目表與作品集分類按鈕：手機版全面開啟自動換行並拉開上下間距 */
+    .price-tabs, .gallery-tabs {
+        display: flex !important;
+        flex-wrap: wrap !important;       /* 允許按鈕自動換行 */
+        justify-content: center !important; /* 換行後置中對齊 */
+        gap: 14px 10px !important;         /* 上下拉開 14px 距離，防止黏得太近 */
+        overflow-x: visible !important;    /* 關閉橫向溢出 */
+        white-space: normal !important;    /* 允許正常斷行 */
+        padding: 0 !important;
+        margin: 0 0 30px 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .tab-btn, .gallery-tab-btn {
+        flex: 0 1 auto !important;         
+        white-space: normal !important;    
+        text-align: center;
+        padding: 10px 20px !important;
+    }
+
+    .price-item {
+        font-size: 15px;
+    }
+    .service-price {
+        font-size: 16px;
+    }
+
+    /* 作品集圖片網格：手機版切換為精美的 2 欄排列 */
+    .grid { 
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 12px;
+    }
+    
+    /* 💥 清除先前錯誤的鎖死代碼，讓作品集卡片完全交給 .gallery-content.active 去顯示 💥 */
+    .grid .color-item {
+        display: flex !important; /* 卡片本身在父層區塊顯示時，內部維持正常佈局 */
+    }
+    
+    .color-item p {
+        font-size: 12.5px;
+    }
+
+    /* 彈窗（Modal）手機版排版優化 */
+    .modal-content {
+        padding: 20px;
+        max-height: 85vh;
+    }
+    
+    .modal-body { 
+        flex-direction: column; 
+        gap: 15px;
+    }
+    
     .thumbnail-list {
-        flex-direction: row;
+        flex-direction: row; 
         width: 100%;
         height: auto;
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding-bottom: 5px;
     }
-    .thumb-item { width: 80px; }
-    .grid { grid-template-columns: repeat(2, 1fr); }
+    
+    .thumb-item { 
+        width: 65px; 
+        flex-shrink: 0;
+    }
+    
+    .main-image-area img {
+        max-height: 45vh;
+    }
+    
+    .modal-footer {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+    }
 }
 
 @media (max-width: 480px) {
-    .price-container { padding: 30px 20px; }
-    .tab-btn { flex: 1 1 auto; }
+    .price-container { 
+        padding: 30px 15px; 
+    }
+    .section-title {
+        font-size: 24px;
+        margin-bottom: 30px;
+    }
+    .style-detail-card {
+        padding: 25px 15px;
+    }
+    .detail-title {
+        font-size: 1.25rem;
+    }
+    .price-dots {
+        margin: 0 8px;
+    }
 }

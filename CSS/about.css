@@ -1,0 +1,131 @@
+/* ============================================================
+   Lumi 嚕咪美學 - 關於我們專屬樣式 (奶油奶茶色系)
+   核心邏輯：所有樣式前綴皆加上 .about-page-wrapper，避免影響 navbar
+   ============================================================ */
+
+/* 1. 僅針對內容區塊定義變數與基礎字體 */
+.about-page-wrapper {
+    --cream-bg: #f9f5f0;       /* 背景奶油色 */
+    --milk-tea: #e2d5c3;       /* 淺奶茶色 */
+    --accent-brown: #8e7d6f;   /* 莫蘭迪深棕 */
+    --text-color: #5c544e;     /* 深褐文字 */
+    --white: #ffffff;
+
+    font-family: "PingFang TC", "Microsoft JhengHei", sans-serif;
+    background-color: var(--cream-bg); /* 只讓 wrapper 變奶油色，不影響 body */
+    color: var(--text-color);
+    line-height: 1.8;
+    padding: 40px 0;
+}
+
+/* 2. 強制隔離：確保內部文字不會繼承外部 navbar 的顏色，也不會影響外部 */
+.about-page-wrapper p, 
+.about-page-wrapper span, 
+.about-page-wrapper li {
+    color: var(--text-color) !important;
+}
+
+/* 3. 內容容器 */
+.about-page-wrapper .container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 50px;
+    background-color: var(--white);
+    border-radius: 24px;
+    box-shadow: 0 15px 40px rgba(142, 125, 111, 0.08);
+}
+
+/* 4. 標題區塊 - 嚴格限制在 wrapper 內 */
+.about-page-wrapper header {
+    text-align: center !important;
+    margin-bottom: 50px !important;
+    background: transparent !important; /* 避免繼承導航欄背景 */
+    box-shadow: none !important;
+}
+
+.about-page-wrapper h1 {
+    color: var(--accent-brown) !important;
+    font-size: 2.4rem !important;
+    letter-spacing: 3px !important;
+    margin-bottom: 8px !important;
+    border: none !important;
+}
+
+.about-page-wrapper .subtitle {
+    font-size: 1.1rem;
+    color: var(--accent-brown);
+    letter-spacing: 1px;
+    opacity: 0.8;
+}
+
+/* 5. 分隔線與區塊標題 */
+.about-page-wrapper .divider {
+    border: 0 !important;
+    height: 1px !important;
+    background-color: var(--milk-tea) !important;
+    margin: 40px 0 !important;
+}
+
+.about-page-wrapper h2 {
+    border-left: 6px solid var(--milk-tea) !important;
+    padding-left: 16px !important;
+    color: var(--accent-brown) !important;
+    font-size: 1.6rem !important;
+    margin-bottom: 20px !important;
+    text-align: left !important;
+}
+
+/* 6. 服務項目網格 */
+.about-page-wrapper .service-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin: 25px 0;
+}
+
+.about-page-wrapper .service-item {
+    background-color: var(--cream-bg) !important;
+    padding: 25px;
+    border-radius: 16px;
+    transition: transform 0.3s ease;
+}
+
+.about-page-wrapper .service-item:hover {
+    transform: translateY(-5px);
+}
+
+.about-page-wrapper .service-title {
+    display: block;
+    color: var(--accent-brown) !important;
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+/* 7. 列表與資訊區 */
+.about-page-wrapper .custom-list li::before {
+    content: "•";
+    color: var(--milk-tea);
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+}
+
+.about-page-wrapper .info-box {
+    background-color: var(--milk-tea) !important;
+    color: var(--text-color) !important;
+    padding: 30px;
+    border-radius: 20px;
+    margin-top: 50px;
+}
+
+/* 8. 響應式 */
+@media (max-width: 600px) {
+    .about-page-wrapper .service-grid {
+        grid-template-columns: 1fr;
+    }
+    .about-page-wrapper .container {
+        margin: 20px;
+        padding: 30px 20px;
+    }
+}

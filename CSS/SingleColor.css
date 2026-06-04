@@ -1,55 +1,71 @@
 @charset "UTF-8";
 
+/* 定義美學品牌色調 */
+:root {
+    --primary-color: #8E7366;
+    --secondary-color: #bfaaa0;
+    --text-color: #5D5451;
+    --light-bg: #F9F6F0; /* 配合截圖中的米杏色背景 */
+}
+
 /* ==========================================
    1. 基礎頁面佈局與導覽區 (Page Layout)
    ========================================== */
 
 .gallery-page-container {
-    max-width: 1200px;         /* 限制最大寬度，避免在大螢幕上過於分散 */
-    margin: 0 auto;            /* 內容水平置中 */
-    padding: 100px 20px 40px;  /* 上方留 100px 是為了避開固定的導覽列 */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 120px 20px 60px; /* 增加上方留白避免被導覽列遮擋 */
 }
 
 .gallery-header {
-    margin-bottom: 40px;       /* 標題與下方作品網格的間距 */
+    margin-bottom: 40px;
+    border-bottom: 1px solid rgba(142, 115, 102, 0.2);
+    padding-bottom: 25px;
 }
 
 .header-nav {
-    margin-bottom: 20px;       /* 返回按鈕與標題文字的間距 */
+    margin-bottom: 20px;
 }
 
-/* 返回按鈕樣式 */
+/* 高級感膠囊返回按鈕 */
 .back-home-btn {
     display: inline-block;
-    padding: 8px 20px;
-    background-color: transparent;
+    padding: 6px 18px;
+    background-color: #fff;
     color: var(--primary-color);
     border: 1px solid var(--primary-color);
-    border-radius: 50px;       /* 圓角膠囊形狀 */
-    text-decoration: none;     /* 移除超連結下劃線 */
-    font-size: 14px;
-    transition: all 0.3s ease; /* 設定顏色切換時的過渡動畫 */
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(142, 115, 102, 0.1);
 }
 
 .back-home-btn:hover {
-    background-color: var(--primary-color); /* 滑鼠懸停時填充顏色 */
+    background-color: var(--primary-color);
     color: #fff !important;
+    transform: translateX(-3px); /* 輕微左移增加動態感 */
 }
 
 .header-info {
-    text-align: left;          /* 標題文字靠左對齊 */
+    text-align: left;
 }
 
 .gallery-title {
-    font-size: 2rem;
+    font-size: 1.8rem;
     color: var(--primary-color);
-    margin-bottom: 5px;
-    font-family: 'Noto Serif TC', serif; /* 使用明體字增加高級感 */
+    margin-bottom: 8px;
+    font-family: 'Noto Serif TC', serif;
+    font-weight: 600;
+    letter-spacing: 2px;
 }
 
 .gallery-subtitle {
-    font-size: 1.1rem;
-    color: #888;               /* 價格文字使用灰色與標題區隔 */
+    font-size: 0.95rem;
+    color: #8c7e74;
+    letter-spacing: 0.5px;
 }
 
 /* ==========================================
@@ -58,191 +74,233 @@
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr); /* 電腦版：固定為 5 欄 */
-    gap: 15px;                             /* 圖片之間的間隙 */
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* 響應式自動填滿，維持精緻小巧 */
+    gap: 25px; /* 增加間距，給視覺呼吸空間 */
 }
 
+/* 優化卡片設計 */
 .color-item {
-    background: #fff;
-    padding: 10px;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05); /* 卡片淡淡的陰影 */
+    background: #ffffff;
+    padding: 12px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(142, 115, 102, 0.08); /* 更柔和的陰影 */
     text-align: center;
-    cursor: zoom-in;                       /* 滑鼠移上去顯示放大鏡符號 */
-    transition: transform 0.3s ease;        /* 設定卡片位移的動畫 */
+    cursor: zoom-in;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    border: 1px solid rgba(255, 255, 255, 0.6);
 }
 
 .color-item:hover {
-    transform: translateY(-5px);           /* 懸停時卡片向上浮起 5px */
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(142, 115, 102, 0.15);
 }
 
 .color-item img {
     width: 100%;
-    height: 180px;             /* 固定高度，確保網格整齊 */
-    object-fit: cover;         /* 裁切圖片以填滿容器，防止比例變形 */
-    border-radius: 5px;
+    aspect-ratio: 1 / 1; /* 強制正方形，美甲作品最完美的比例 */
+    object-fit: cover;
+    border-radius: 8px;
 }
 
 .color-item p {
-    margin-top: 10px;
+    margin-top: 12px;
     font-size: 14px;
-    color: #555;               /* 作品名稱顏色 */
+    color: var(--text-color);
+    font-weight: 500;
+    letter-spacing: 0.5px;
 }
 
 /* ==========================================
-   3. 彈出視窗：背景與動畫 (Modal Container)
+   3. 彈出視窗 (Modal System)
    ========================================== */
 
 .modal {
-    display: none;             /* 預設隱藏，由 JS 切換為 flex */
-    position: fixed;           /* 固定在螢幕上 */
+    display: none; 
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7); /* 黑色半透明背景 */
-    backdrop-filter: blur(8px);           /* 背景模糊效果 */
-    z-index: 9999;                        /* 確保層級在最前面 */
-    justify-content: center;              /* 內容水平置中 */
-    align-items: center;                  /* 內容垂直置中 */
+    background-color: rgba(40, 36, 35, 0.6); /* 稍微帶暖調的深色遮罩 */
+    backdrop-filter: blur(10px);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
 }
 
 .modal-content {
     background: #fff;
-    padding: 25px;
-    border-radius: 16px;
+    padding: 35px;
+    border-radius: 20px;
     position: relative;
-    width: 90%;
-    max-width: 1000px;         /* 限制最大寬度，避免在大螢幕過寬 */
-    max-height: 90vh;          /* 限制最大高度，避免超出視窗 */
-    margin: auto;
-    text-align: center;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.3);
-    animation: zoomIn 0.3s ease;            /* 調用縮放進入動畫 */
+    width: 100%;
+    max-width: 850px; /* 微調最大寬度，結構更緊湊精緻 */
+    max-height: 85vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 50px rgba(142, 115, 102, 0.15);
+    animation: zoomIn 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-/* 關閉按鈕 (X) */
 .close-btn {
     position: absolute;
-    top: 10px;
+    top: 15px;
     right: 20px;
-    font-size: 30px;
+    font-size: 28px;
     cursor: pointer;
-    color: #333;
+    color: #bfaaa0;
+    transition: color 0.2s, transform 0.2s;
+    line-height: 1;
     z-index: 10;
 }
 
-/* ==========================================
-   4. 彈出視窗：內部排版 (Modal Body)
-   ========================================== */
+.close-btn:hover {
+    color: var(--primary-color);
+    transform: rotate(90deg); /* 增加輕微旋轉的細節感 */
+}
 
+/* 彈窗內部左右排版 */
 .modal-body {
-    display: flex;             /* 彈性佈局 */
-    flex-direction: row;       /* 電腦版：左右排列 */
-    gap: 30px;
-    align-items: flex-start;
-    margin-top: 10px;
-}
-
-/* 左側大圖顯示區 */
-.main-image-area {
-    flex: 2;                   /* 佔據 2/3 的空間 */
-    text-align: center;
-}
-
-.main-image-area img {
-    width: 100%;
-    max-height: 70vh;
-    object-fit: contain;       /* 確保圖片完整顯示不被裁切 */
-    border-radius: 8px;
-}
-
-/* 右側縮圖清單 */
-.thumbnail-list {
-    flex: 0 0 120px;           /* 固定寬度 120px */
     display: flex;
-    flex-direction: column;    /* 垂直排列 */
-    gap: 12px;
-    max-height: 65vh;          /* 限制高度以啟動捲動 */
-    overflow-y: auto;          /* 內容過多時顯示垂直捲動條 */
-    padding-right: 5px;
-    scrollbar-width: none;     /* Firefox 隱藏捲軸 */
-    -ms-overflow-style: none;  /* IE 隱藏捲軸 */
-}
-
-/* 隱藏 Chrome/Safari 捲軸，讓介面更美觀 */
-.thumbnail-list::-webkit-scrollbar {
-    display: none;
-}
-
-.thumb-item {
-    width: 100%;
-    aspect-ratio: 1/1;         /* 強制縮圖為正方形 */
-    object-fit: cover;
-    border-radius: 6px;
-    cursor: pointer;
-    border: 3px solid transparent; /* 預設無邊框 */
-    opacity: 0.6;              /* 非選取狀態半透明 */
-    transition: 0.2s;
-    flex-shrink: 0;            /* 防止縮圖被擠壓變形 */
-}
-
-/* 當前點選中的縮圖 */
-.thumb-item.active {
-    border-color: #d8b6a4;     /* 選中時的邊框顏色 (莫蘭迪色) */
-    opacity: 1;                /* 取消透明度 */
-}
-
-.modal-footer {
+    flex-direction: row;
+    gap: 35px;
+    align-items: flex-start; /* 對齊頂部，避免短內容被拉伸 */
     margin-top: 15px;
-    color: #555;
+}
+
+/* 左側主圖/影片網格區域 */
+.main-image-area, .main-media-wrap {
+    flex: 1.1;
+    background: #FAF8F5;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1 / 1; /* 保持完美正方形比例 */
+    position: relative;
+    box-shadow: inset 0 0 10px rgba(142, 115, 102, 0.03);
+}
+
+.main-media-wrap img, .main-media-wrap video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 圖片滿版裁切，最吸睛 */
+    border-radius: 12px;
+}
+
+/* 右側側邊欄資訊區 */
+.modal-info-sidebar {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.modal-text-content h2 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    font-family: 'Noto Serif TC', serif;
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+}
+
+/* 獨立出自訂描述區（內含材料、價格提示卡、縮圖） */
+#modalDesc {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--text-color);
+}
+
+/* 材料與基礎說明文字的基本樣式 */
+#modalDesc p {
+    margin: 6px 0;
+    color: var(--text-color);
+}
+
+/* ⚡ 核心優化：JS 自動產生的原價提醒區塊外觀 (專屬風格提示框) */
+#modalDesc div[style*="border-top"] {
+    background: #FAF7F2 !important; /* 溫柔的淡杏色底色 */
+    border: 1px dashed rgba(142, 115, 102, 0.3) !important; /* 奶茶色虛線外框 */
+    border-radius: 8px;
+    padding: 12px 15px !important;
+    margin-top: 20px !important;
+}
+
+#modalDesc div[style*="border-top"] p {
+    color: var(--primary-color) !important;
+    font-weight: 600 !important;
+}
+
+#modalDesc div[style*="border-top"] span {
+    color: #4A3E39 !important; /* 深可可色讓數字在杏色底上更顯眼 */
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.15rem !important;
+}
+
+/* 更多角度多圖橫向滾動外觀 */
+#modalDesc div[style*="display: flex"] {
+    scrollbar-width: thin; /* Firefox 輕量滾動條 */
+    scrollbar-color: #EADED7 transparent;
+}
+
+/* 針對 Chrome / Safari 瀏覽器優化橫向滾動條 */
+#modalDesc div[style*="display: flex"]::-webkit-scrollbar {
+    height: 4px;
+}
+
+#modalDesc div[style*="display: flex"]::-webkit-scrollbar-thumb {
+    background-color: #EADED7;
+    border-radius: 10px;
+}
+
+/* 縮圖卡片微浮動與框線特效 */
+#modalDesc img[style*="width: 60px"], #modalDesc div[style*="width: 60px"] {
+    border: 1px solid #EADED7 !important;
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+#modalDesc img[style*="width: 60px"]:hover, #modalDesc div[style*="width: 60px"]:hover {
+    border-color: var(--primary-color) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(142, 115, 102, 0.15);
 }
 
 /* ==========================================
-   5. 動畫定義與響應式設計 (Responsive)
+   4. 動畫與響應式設計 (Responsive)
    ========================================== */
 
 @keyframes zoomIn {
-    from { transform: scale(0.9); opacity: 0; }
+    from { transform: scale(0.95); opacity: 0; }
     to { transform: scale(1); opacity: 1; }
 }
 
-/* 平板尺寸 (900px 以下) */
-@media (max-width: 900px) {
-    .grid { grid-template-columns: repeat(3, 1fr); } /* 改為一排 3 張 */
-}
-
-/* 手機版適配 (768px 以下) */
+/* 手機與平板適配過渡 */
 @media (max-width: 768px) {
-    .gallery-page-container { padding-top: 80px; }
+    .gallery-page-container { 
+        padding-top: 90px; 
+    }
     
-    .grid { grid-template-columns: repeat(2, 1fr); } /* 改為一排 2 張 */
+    .grid { 
+        gap: 15px; 
+    }
     
-    .gallery-title { font-size: 1.5rem; }
-
-    /* 重點：手機版將 Modal 排版改為上下排列 */
     .modal-body {
-        flex-direction: column;
-        gap: 15px;
+        flex-direction: column; /* 手機版改為上下垂直排列 */
+        gap: 20px;
     }
-
-    /* 手機版縮圖列表改為橫向排列 */
-    .thumbnail-list {
-        flex-direction: row; 
+    
+    .main-image-area, .main-media-wrap {
+        max-height: 40vh; /* 避免手機版主圖過高佔滿整個螢幕 */
         width: 100%;
-        height: auto;
-        flex: none;
-        overflow-x: auto;      /* 改為水平捲動 */
-        padding-bottom: 5px;
     }
-
-    .thumb-item {
-        width: 60px;           /* 手機版縮圖縮小 */
+    
+    .modal-info-sidebar {
+        text-align: center; /* 手機版內容置中，符合視覺習慣 */
     }
-}
-
-/* 極小螢幕手機 (480px 以下) */
-@media (max-width: 480px) {
-    .grid { gap: 10px; }
-    .color-item img { height: 140px; } /* 縮小圖片高度 */
+    
+    /* 當縮圖列表在手機版顯示時自動置中 */
+    #modalDesc div[style*="display: flex"] {
+        justify-content: center;
+    }
 }
